@@ -8,8 +8,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TestAO1145WPF.ViewModel;
 
-namespace TestAO1145WPF
+namespace TestAO1145WPF.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -19,6 +20,7 @@ namespace TestAO1145WPF
         public MainWindow()
         {
             InitializeComponent();
+
         }
     }
 }

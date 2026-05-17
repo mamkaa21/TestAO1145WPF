@@ -4,9 +4,38 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestAO1145WPF.View"
+        xmlns:m="clr-namespace:TestAO1145WPF.Model"
+        xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
         mc:Ignorable="d"
-        Title="EnterWin" Height="450" Width="800">
+        DataContext="{DynamicResource vm}"
+        Title="Окно входа" Height="450" Width="800">
+    <Window.Resources>
+        <vm:EnterWinVM x:Key ="vm"/>
+    </Window.Resources>
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button Grid.Column="5" Content="Регистрация" Command="{Binding RegisterWinOpen}"/>
+        <Label Grid.Column="1" Grid.Row="2" Content="Логин" FontSize="25"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding Student.Login}" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="2" Margin="0 20 0 20"/>
+        <Label Grid.Column="1" Grid.Row="3"  Content="Пароль"  FontSize="25"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding Student.Password}" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="3" Margin="0 20 0 20"/>
+        <!--<PasswordBox x:Name="passwordBox" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="3" Margin="0 20 0 20" />-->
+        <Button Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2" Content="Войти" FontSize="30" Margin="10" Command="{Binding Enter}"/>
     </Grid>
 </Window>

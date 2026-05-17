@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.Xml;
+using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using TestAO1145WPF.Model;
 using TestAO1145WPF.View;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+//using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace TestAO1145WPF.ViewModel
 {
@@ -31,6 +30,8 @@ namespace TestAO1145WPF.ViewModel
                 if (responce.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
                     var result = await responce.Content.ReadAsStringAsync();
+
+
                     MessageBox.Show("Вы ввели неверный логин или пароль");
                     return;
                 }
@@ -40,7 +41,7 @@ namespace TestAO1145WPF.ViewModel
                     var token = await responce.Content.ReadAsStringAsync();
                     HttpClients.SetToken(token);
                     responce = await HttpClients.HttpClient.GetAsync($"Student");
-                    var d = await responce.Content.ReadFromJsonAsync<Student>();
+                    var d = await responce.Content.ReadFromJsonAsync<StModel>();
                     MessageBox.Show("Оk");
                     return;
                     //if (d.RoleId == 1)

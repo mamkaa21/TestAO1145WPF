@@ -11,20 +11,17 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using TestAO1145WPF.ViewModel;
-
 
 namespace TestAO1145WPF.View
 {
     /// <summary>
-    /// Логика взаимодействия для EnterWin.xaml
+    /// Логика взаимодействия для RegisterWin.xaml
     /// </summary>
-    public partial class EnterWin : Window
+    public partial class RegisterWin : Window
     {
-        public EnterWin()
+        public RegisterWin()
         {
             InitializeComponent();
-            (DataContext as EnterWinVM).SetWindow(this);
         }
     }
 }
