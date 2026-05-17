@@ -20,6 +20,7 @@ namespace TestAO1145WPF.ViewModel
     {
         public Student Student { get; set; } = new();
         public Command Enter { get; }
+        public Command RegisterWinOpen { get; }
         public EnterWinVM()
         {
             Enter = new Command(async () =>
@@ -38,8 +39,10 @@ namespace TestAO1145WPF.ViewModel
                 {
                     var token = await responce.Content.ReadAsStringAsync();
                     HttpClients.SetToken(token);
-                    responce = await HttpClients.HttpClient.GetAsync($"User");
-                    var d = await responce.Content.ReadFromJsonAsync<StModel>();
+                    responce = await HttpClients.HttpClient.GetAsync($"Student");
+                    var d = await responce.Content.ReadFromJsonAsync<Student>();
+                    MessageBox.Show("Оk");
+                    return;
                     //if (d.RoleId == 1)
                     //{
                     //    //AdminWin adminWin = new AdminWin();
@@ -61,13 +64,20 @@ namespace TestAO1145WPF.ViewModel
                     MessageBox.Show("Ошибка подключения");
                     return;
                 }
-
-
             });
             //запрос для входа + проверка на роль юзера? если роль 2 - окно юзера открывается
-            // если роль 1 - то окно админа   
+            // если роль 1 - то окно админа
+
+            RegisterWinOpen = new Command(async () =>
+            {
+                RegisterWin registerWin = new RegisterWin();
+                registerWin.Show();
+                Signal();
+                enterWindow.Close();
+            });
         }
 
+       
         EnterWin enterWindow;
         internal void SetWindow(EnterWin enterWindow)
         {
