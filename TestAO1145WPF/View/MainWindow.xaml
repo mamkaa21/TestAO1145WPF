@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestAO1145WPF.View"
          xmlns:m="clr-namespace:TestAO1145WPF.Model"
-         xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
+         xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel" xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
         mc:Ignorable="d"
         DataContext="{DynamicResource vm}"
         Title="Главное окно" Height="450" Width="800">
@@ -13,6 +13,52 @@
         <vm:MainWinVM x:Key ="vm"/>
     </Window.Resources >
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button Grid.Column="1" Content="Окно рез-тов тестов"  Command="{Binding OpenResultWin}"/>
+        <Button Grid.Column="3" Content="Все тесты" Command="{Binding OpenAllTestWin}"/>
+        <Button Grid.Column="5" Content="Окно студента"  Command="{Binding OpenStudentWin}"/>
+        <ListBox Grid.Row="1" Grid.ColumnSpan="6"  Grid.RowSpan="6" ScrollViewer.VerticalScrollBarVisibility="Visible"
+                    ItemsSource="{Binding TestList}" SelectedItem="{Binding Test}" x:Name="UserMenuLB">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <i:InvokeCommandAction Command="{Binding DoubleClickCommand}"
+                                                   CommandParameter="{Binding ElementName=UserMenuLB, Path=SelectedItem}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                    <!--тут ничего не трогать!!!-->
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate >
+                <DataTemplate >
+                    <StackPanel Width="200">
+                        <TextBlock  Text="{Binding Name}"/>
+                
 
+                        <!--тут дальше все айди я хз как вытануть-->
+
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            </ListBox>
     </Grid>
+  
 </Window>

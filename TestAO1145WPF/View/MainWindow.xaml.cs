@@ -20,7 +20,7 @@ namespace TestAO1145WPF.View
         public MainWindow()
         {
             InitializeComponent();
-
+            (DataContext as MainWinVM).SetWindow(this);
         }
     }
 }

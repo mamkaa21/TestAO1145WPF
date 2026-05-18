@@ -24,47 +24,51 @@ namespace TestAO1145WPF.ViewModel
         {
             Enter = new Command(async () =>
             {
-                string arg = JsonSerializer.Serialize(Student);
-                var responce = await HttpClients.HttpClient.PostAsync($"Auth/CheckAccountIsExist", new StringContent(arg, Encoding.UTF8, "application/json"));
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                Signal();
+                enterWindow.Close();
+                //string arg = JsonSerializer.Serialize(Student);
+                //var responce = await HttpClients.HttpClient.PostAsync($"Auth/CheckAccountIsExist", new StringContent(arg, Encoding.UTF8, "application/json"));
 
-                if (responce.StatusCode == System.Net.HttpStatusCode.NotFound)
-                {
-                    var result = await responce.Content.ReadAsStringAsync();
+                //if (responce.StatusCode == System.Net.HttpStatusCode.NotFound)
+                //{
+                //    var result = await responce.Content.ReadAsStringAsync();
 
 
-                    MessageBox.Show("Вы ввели неверный логин или пароль");
-                    return;
-                }
+                //    MessageBox.Show("Вы ввели неверный логин или пароль");
+                //    return;
+                //}
 
-                if (responce.StatusCode == System.Net.HttpStatusCode.OK)
-                {
-                    var token = await responce.Content.ReadAsStringAsync();
-                    HttpClients.SetToken(token);
-                    responce = await HttpClients.HttpClient.GetAsync($"Student");
-                    var d = await responce.Content.ReadFromJsonAsync<StModel>();
-                    MessageBox.Show("Оk");
-                    return;
-                    //if (d.RoleId == 1)
-                    //{
-                    //    //AdminWin adminWin = new AdminWin();
-                    //    //adminWin.Show();
-                    //    Signal();
-                    //    //enterWindow.Close();
-                    //}
-                    //else
-                    //{
-                    //    //UserMenu userMenu = new UserMenu();
-                    //    //userMenu.Show();
-                    //    Signal();
-                    //    //enterWindow.Close();
-                    //}
-                }
-                else
-                {
-                    var result = await responce.Content.ReadAsStringAsync();
-                    MessageBox.Show("Ошибка подключения");
-                    return;
-                }
+                //if (responce.StatusCode == System.Net.HttpStatusCode.OK)
+                //{
+                //    var token = await responce.Content.ReadAsStringAsync();
+                //    HttpClients.SetToken(token);
+                //    responce = await HttpClients.HttpClient.GetAsync($"Students");
+                //    var d = await responce.Content.ReadFromJsonAsync<StModel>();
+                //    MessageBox.Show("Оk");
+                //    return;
+                //if (d.RoleId == 1)
+                //{
+                //    //AdminWin adminWin = new AdminWin();
+                //    //adminWin.Show();
+                //    Signal();
+                //    //enterWindow.Close();
+                //}
+                //else
+                //{
+                //    //UserMenu userMenu = new UserMenu();
+                //    //userMenu.Show();
+                //    Signal();
+                //    //enterWindow.Close();
+                //}
+                //}
+                //else
+                //{
+                //    var result = await responce.Content.ReadAsStringAsync();
+                //    MessageBox.Show("Ошибка подключения");
+                //    return;
+                //}
             });
             //запрос для входа + проверка на роль юзера? если роль 2 - окно юзера открывается
             // если роль 1 - то окно админа

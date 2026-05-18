@@ -30,7 +30,6 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button Grid.Column="5" Content="Регистрация" Command="{Binding RegisterWinOpen}"/>
         <Label Grid.Column="1" Grid.Row="2" Content="Логин" FontSize="25"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBox Text="{Binding Student.Login}" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="2" Margin="0 20 0 20"/>
         <Label Grid.Column="1" Grid.Row="3"  Content="Пароль"  FontSize="25"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
