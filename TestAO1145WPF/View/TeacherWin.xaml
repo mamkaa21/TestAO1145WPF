@@ -18,37 +18,75 @@
             <RowDefinition Height="20"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Menu>
-            <MenuItem Header="Окно рез-тов тестов" Command="{Binding OpenResultWin}"/>
-            <MenuItem Header="Все тесты" Command="{Binding OpenAllTestWin}" />
-            <MenuItem Header="Окно профиля" Command="{Binding OpenStudentWin}"/>
-            <MenuItem Header="Создать тест" Command="{Binding OpenStudentWin}"/>
-        </Menu>
-        <ListBox Grid.Row="1" Grid.ColumnSpan="6"  Grid.RowSpan="6" ScrollViewer.VerticalScrollBarVisibility="Visible"
-             ItemsSource="{Binding TestList}" SelectedItem="{Binding Test}" x:Name="UserMenuLB">
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseDoubleClick">
-                    <i:InvokeCommandAction Command="{Binding DoubleClickCommand}"
-                                            CommandParameter="{Binding ElementName=UserMenuLB, Path=SelectedItem}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-            <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel />
-                    <!--тут ничего не трогать!!!-->
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
-            <ListBox.ItemTemplate >
-                <DataTemplate >
-                    <StackPanel Width="200">
-                        <TextBlock  Text="{Binding Name}"/>
+        <StackPanel Orientation="Horizontal" >
+            <Button Content="Окно ре-тов " HorizontalAlignment="Left" Command="{Binding OpenResultWin}" Background="White" BorderBrush="White"/>
+            <Button Content=" Все тесты "  HorizontalAlignment="Left" Command="{Binding OpenAllTestWin}" Background="White" BorderBrush="White"/>
+            <Button Content=" Окно профиля"  HorizontalAlignment="Left" Command="{Binding OpenStudentWin}" Background="White" BorderBrush="White"/>
+        </StackPanel>
+
+        <TabControl Grid.Row="1">
+            <TabItem  Header="Тесты">
+                <StackPanel>
+                    <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible"
+     ItemsSource="{Binding TestList}" SelectedItem="{Binding Test}" x:Name="UserMenuL" Height="405">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDoubleClick">
+                                <i:InvokeCommandAction Command="{Binding DoubleClickCommand}"
+                           CommandParameter="{Binding ElementName=UserMenuLB, Path=SelectedItem}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel />
+                                <!--тут ничего не трогать!!!-->
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate >
+                            <DataTemplate >
+                                <StackPanel >
+                                    <!--<TextBlock  Text="{Binding FirstName}"/>
+                                    <TextBlock  Text="{Binding LastName}"/>-->
 
 
-                        <!--тут дальше все айди я хз как вытануть-->
+                                    <!--тут дальше все айди я хз как вытануть-->
 
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Предметы">
+                <StackPanel>
+                    <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible"
+ItemsSource="{Binding SubjectList}" SelectedItem="{Binding Subject}" x:Name="UserMenu" Height="405">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDoubleClick">
+                                <i:InvokeCommandAction Command="{Binding DoubleClickCommand}"
+                      CommandParameter="{Binding ElementName=UserMenuLB, Path=SelectedItem}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel />
+                                <!--тут ничего не трогать!!!-->
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate >
+                            <DataTemplate >
+                                <StackPanel >
+                                    <TextBlock  Text="{Binding FirstName}"/>
+                                    <TextBlock  Text="{Binding LastName}"/>
+
+
+                                    <!--тут дальше все айди я хз как вытануть-->
+
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

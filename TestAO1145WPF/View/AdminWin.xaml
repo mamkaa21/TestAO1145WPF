@@ -20,18 +20,113 @@ xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Menu>
-            <MenuItem Header="Преподавателя">
-                <MenuItem Header="Добавить" Command="{Binding OpenAddNewTeacher}" />
-                <MenuItem Header="Изменить" Command="{Binding OpenEditTeacher}"/>
+      <MenuItem Header="Создать">
+                <MenuItem Header="Добавить" Command="{Binding OpenAddTeacher}" />
+                <!--<MenuItem Header="Изменить" Command="{Binding OpenAddStudent}"/>
+                <MenuItem Header="Изменить" Command="{Binding OpenAddSubject}"/>-->
             </MenuItem>
-            <MenuItem Header="Студенты">
-                <MenuItem Header="Добавить" Command="{Binding OpenAddNewStudent}" />
-                <MenuItem Header="Изменить" Command="{Binding OpenEditStudent}"/>
+            <MenuItem Header="Удалить">
+                <MenuItem Header="Добавить" Command="{Binding OpenDelete}" />
+                <!--<MenuItem Header="Изменить" Command="{Binding OpenDeleteT}"/>
+                <MenuItem Header="Изменить" Command="{Binding OpenDeleteSt}"/>-->
             </MenuItem>
-            <MenuItem Header="Предметы">
-                <MenuItem Header="Добавить" Command="{Binding OpenAddNewSubject}" />
-                <MenuItem Header="Изменить" Command="{Binding OpenEditSubject}"/>
-            </MenuItem>
-        </Menu>
+        </Menu> 
+        <TabControl Grid.Row="1">
+            <TabItem  Header="Преподаватели">
+                <StackPanel>
+                    <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible"
+                    ItemsSource="{Binding TeacherList}" SelectedItem="{Binding Teacher}" x:Name="UserMenuLB" Height="405">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDoubleClick">
+                                <i:InvokeCommandAction Command="{Binding DoubleClickCommand}"
+                                          CommandParameter="{Binding ElementName=UserMenuLB, Path=SelectedItem}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel />
+                                <!--тут ничего не трогать!!!-->
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate >
+                            <DataTemplate >
+                                <StackPanel >
+                                    <TextBlock  Text="{Binding FirstName}"/>
+                                    <TextBlock  Text="{Binding LastName}"/>
+
+
+                                    <!--тут дальше все айди я хз как вытануть-->
+
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </TabItem>
+            <TabItem  Header="Студенты">
+                <StackPanel>
+                    <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible"
+     ItemsSource="{Binding StudentList}" SelectedItem="{Binding Student}" x:Name="UserMenuL" Height="405">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDoubleClick">
+                                <i:InvokeCommandAction Command="{Binding DoubleClickCommand}"
+                           CommandParameter="{Binding ElementName=UserMenuLB, Path=SelectedItem}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel />
+                                <!--тут ничего не трогать!!!-->
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate >
+                            <DataTemplate >
+                                <StackPanel >
+                                    <TextBlock  Text="{Binding FirstName}"/>
+                                    <TextBlock  Text="{Binding LastName}"/>
+
+
+                                    <!--тут дальше все айди я хз как вытануть-->
+
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Предметы">
+                <StackPanel>
+                    <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible"
+ItemsSource="{Binding SubjectList}" SelectedItem="{Binding Subject}" x:Name="UserMenu" Height="405">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDoubleClick">
+                                <i:InvokeCommandAction Command="{Binding DoubleClickCommand}"
+                      CommandParameter="{Binding ElementName=UserMenuLB, Path=SelectedItem}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel />
+                                <!--тут ничего не трогать!!!-->
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate >
+                            <DataTemplate >
+                                <StackPanel >
+                                    <TextBlock  Text="{Binding FirstName}"/>
+                                    <TextBlock  Text="{Binding LastName}"/>
+
+
+                                    <!--тут дальше все айди я хз как вытануть-->
+
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+       
+       
     </Grid>
 </Window>
