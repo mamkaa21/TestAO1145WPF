@@ -36,7 +36,7 @@ namespace TestAO1145WPF.ViewModel
         public Command OpenResultWin { get; }
 
         public Command OpenAllTestWin { get; }
-        public Command OpenStudentWin { get; }
+        public Command OpenUserStWin { get; }
         public ICommand DoubleClickCommand { get; private set; }
         public MainWinVM()
         {
@@ -52,11 +52,11 @@ namespace TestAO1145WPF.ViewModel
                 //allTestWin.Show();
                 //Signal();   
             });
-            OpenStudentWin = new Command(async () =>
+            OpenUserStWin = new Command(async () =>
             {
-                //StudentWin  studentWin  = new StudentWin ();
-                //studentWin.Show();
-                //Signal();   
+                UserStWin userStWin = new UserStWin();
+                userStWin.Show();
+                Signal();
             });
             //DoubleClickCommand = new RelayCommand(DoubleClickExecute);
         }

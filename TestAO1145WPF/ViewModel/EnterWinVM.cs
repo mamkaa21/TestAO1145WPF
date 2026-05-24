@@ -28,6 +28,8 @@ namespace TestAO1145WPF.ViewModel
                 mainWindow.Show();
                 Signal();
                 enterWindow.Close();
+
+                //возможно стоит сделать таблицу юзера и таблицу ролей и разделять учителей и студентов так я хз 
                 //string arg = JsonSerializer.Serialize(Student);
                 //var responce = await HttpClients.HttpClient.PostAsync($"Auth/CheckAccountIsExist", new StringContent(arg, Encoding.UTF8, "application/json"));
 

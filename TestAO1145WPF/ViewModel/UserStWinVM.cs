@@ -7,17 +7,22 @@ using TestAO1145WPF.Model;
 
 namespace TestAO1145WPF.ViewModel
 {
-    class UserWinVM: BaseVM
+    class UserStWinVM : BaseVM
     {
-        private Test test { get; set; }
-        public Test Test
+        private Student student { get; set; }
+        public Student Student
         {
-            get => test;
+            get => student;
             set
             {
-                test = value;
-                Signal(nameof(Test));
+                student = value;
+                Signal(nameof(Student));
             }
+        }
+
+        public UserStWinVM()
+        {
+
         }
     }
 }

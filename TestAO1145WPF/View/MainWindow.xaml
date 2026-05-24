@@ -20,7 +20,7 @@
         <StackPanel Orientation="Horizontal" >
             <Button Content="Окно ре-тов " HorizontalAlignment="Left" Command="{Binding OpenResultWin}" Background="White" BorderBrush="White"/>
             <Button Content=" Все тесты "  HorizontalAlignment="Left" Command="{Binding OpenAllTestWin}" Background="White" BorderBrush="White"/>
-            <Button Content=" Окно профиля"  HorizontalAlignment="Left" Command="{Binding OpenStudentWin}" Background="White" BorderBrush="White"/>
+            <Button Content=" Окно профиля"  HorizontalAlignment="Left" Command="{Binding OpenUserStWin}" Background="White" BorderBrush="White"/>
         </StackPanel>
         <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.Row="2"
                     ItemsSource="{Binding TeacherList}" SelectedItem="{Binding Teacher}" x:Name="UserMenuLB" Height="405">

@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace TestAO1145WPF.View
 {
     /// <summary>
-    /// Логика взаимодействия для UserWin.xaml
+    /// Логика взаимодействия для UserStWin.xaml
     /// </summary>
-    public partial class UserWin : Window
+    public partial class UserStWin : Window
     {
-        public UserWin()
+        public UserStWin()
         {
             InitializeComponent();
         }
