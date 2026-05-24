@@ -6,8 +6,7 @@
              xmlns:local="clr-namespace:TestAO1145WPF.View"
 xmlns:m="clr-namespace:TestAO1145WPF.Model"
 xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
-         xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
-        mc:Ignorable="d"
+         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"     
         mc:Ignorable="d"
               DataContext="{DynamicResource vm}"
     Title="Главное окно" Height="450" Width="800">
