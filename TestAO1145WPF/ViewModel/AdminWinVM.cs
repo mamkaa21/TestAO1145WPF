@@ -101,9 +101,6 @@ namespace TestAO1145WPF.ViewModel
             });
         }
          
-      
-
-        
         internal void SetWindow(AdminWin adminWin)
         {
             this.adminWin = adminWin;
