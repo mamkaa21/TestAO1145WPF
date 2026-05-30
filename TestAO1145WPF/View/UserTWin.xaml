@@ -8,32 +8,45 @@ xmlns:m="clr-namespace:TestAO1145WPF.Model"
 xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
         mc:Ignorable="d"
                DataContext="{DynamicResource vm}"
-Title="Главное окно" Height="450" Width="800">
+Title="Окно профиля" Height="450" Width="800">
     <Window.Resources >
         <vm:UserTWinVM x:Key ="vm"/>
     </Window.Resources >
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="150"/>
             <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition />
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+           
+        </Grid.ColumnDefinitions>
         <Button Content="  назад  " Command="{Binding Back}" HorizontalAlignment="Left" Background="White" BorderBrush="White"/>
-        <StackPanel Grid.Row="1">
-            <Label Content="Почта" Grid.Row="2" FontSize="20" HorizontalAlignment="Left"/>
-                    <TextBox Text="{Binding User.Email}" BorderBrush="Black" Width="300" HorizontalAlignment="Left" IsEnabled="{Binding ListBoxEnabled}"/> 
-            <Label Content="Имя"  Grid.Row="1" FontSize="20" HorizontalAlignment="Left"/>
-                    <TextBox Text="{Binding User.Name}"  BorderBrush="Black" Width="300" HorizontalAlignment="Left" IsEnabled="{Binding ListBoxEnabled}"/>
+        <Image  Width="150" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="1"/>
+        <Label Content="Преподаватель "  FontSize="20"   Grid.Row="2"  />
+        <TextBox Text="{Binding Teacher.LastName}" BorderBrush="White"   IsEnabled="{Binding ListBoxEnabled}" Grid.Row="2" Grid.Column="1" 
+                 Height="30" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding Teacher.FirstName}"  BorderBrush="White"   IsEnabled="{Binding ListBoxEnabled}" Grid.Row="2" Grid.Column="2" 
+                 Height="30" VerticalAlignment="Top"/>
+            <Label Content="Группы"  Grid.Row="3"  />
+        <ListBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="2" ItemsSource="{Binding ClassList}" SelectedItem="{Binding Class}">
+            <ListBoxItem>
+                <TextBlock Text="{Binding Number}"/>
+            </ListBoxItem>
+        </ListBox>
 
-                   
 
-                    <Label Content="Логин" Grid.Row="2" FontSize="20" HorizontalAlignment="Left"/>
-                    <TextBox Text="{Binding User.Login}"  BorderBrush="Black" Width="300" HorizontalAlignment="Left" IsEnabled="{Binding ListBoxEnabled}"/>
 
-                    <Label Content="Пароль" Grid.Row="2" FontSize="20" HorizontalAlignment="Left"/>
-                    <TextBox Text="{Binding User.Password}"  BorderBrush="Black" Width="300" HorizontalAlignment="Left" IsEnabled="{Binding ListBoxEnabled}"/>
 
-                    <Button Content="Сохранить изменения" Width="300" HorizontalAlignment="Center" Margin="0 24 0 0" Command="{Binding SaveChangedByUserWin}"/>
-                </StackPanel>
-          
+
+
+        <Button Content="Сохранить изменения" Width="150" HorizontalAlignment="Center" Margin="0 24 0 0" Command="{Binding SaveChangedByUserWin}" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

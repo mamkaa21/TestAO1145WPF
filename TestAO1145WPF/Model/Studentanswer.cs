@@ -3,15 +3,17 @@ using System.Collections.Generic;
 
 namespace TestAO1145WPF;
 
-public partial class Question
+public partial class Studentanswer
 {
     public int Id { get; set; }
 
-    public string? Name { get; set; }
+    public int? IdStudent { get; set; }
 
     public int? IdTest { get; set; }
 
-    public virtual ICollection<Aswer> Aswers { get; set; } = new List<Aswer>();
+    public DateTime? DateTime { get; set; }
+
+    public virtual Student? IdStudentNavigation { get; set; }
 
     public virtual Test? IdTestNavigation { get; set; }
 }

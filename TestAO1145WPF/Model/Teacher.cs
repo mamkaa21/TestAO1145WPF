@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TestAO1145WPF.Model;
+namespace TestAO1145WPF;
 
 public partial class Teacher
 {
@@ -10,8 +10,6 @@ public partial class Teacher
     public string? FirstName { get; set; }
 
     public string? LastName { get; set; }
-
-    public int? IdSubject { get; set; }
 
     public string Login { get; set; } = null!;
 
@@ -22,10 +20,6 @@ public partial class Teacher
     public virtual ICollection<Class> Classes { get; set; } = new List<Class>();
 
     public virtual Class? IdClassNavigation { get; set; }
-
-    public virtual Subject? IdSubjectNavigation { get; set; }
-
-    public virtual ICollection<Subject> Subjects { get; set; } = new List<Subject>();
 
     public virtual ICollection<Test> Tests { get; set; } = new List<Test>();
 }
