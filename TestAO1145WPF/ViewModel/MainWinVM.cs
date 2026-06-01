@@ -34,7 +34,6 @@ namespace TestAO1145WPF.ViewModel
 
 
         public Command OpenResultWin { get; }
-
         public Command OpenAllTestWin { get; }
         public Command OpenUserStWin { get; }
         public ICommand DoubleClickCommand { get; private set; }
@@ -58,19 +57,19 @@ namespace TestAO1145WPF.ViewModel
                 userStWin.Show();
                 Signal();
             });
-            //DoubleClickCommand = new RelayCommand(DoubleClickExecute);
+            DoubleClickCommand = new RelayCommand(DoubleClickExecute);
         }
 
-        //private void DoubleClickExecute(object parameter)
-        //{
+        private void DoubleClickExecute(object parameter)
+        {
 
-        //    if (parameter is Test Test)
-        //    {
-        //        //TestWin goodWin = new TestWin(Test);
-        //        //goodWin.Show();
-        //        //Signal();
-        //    }
-        //}
+            if (parameter is Test Test)
+            {
+                //TestWin goodWin = new TestWin(Test);
+                //goodWin.Show();
+                //Signal();
+            }
+        }
         MainWindow mainWindow;
         internal void SetWindow(MainWindow mainWindow)
         {

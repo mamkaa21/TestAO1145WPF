@@ -72,16 +72,7 @@ namespace TestAO1145WPF.ViewModel
                     return;
                 }
             });
-            //запрос для входа + проверка на роль юзера? если роль 2 - окно юзера открывается
-            // если роль 1 - то окно админа
-
-            RegisterWinOpen = new Command(async () =>
-            {
-                RegisterWin registerWin = new RegisterWin();
-                registerWin.Show();
-                Signal();
-                enterWindow.Close();
-            });
+                     
         }
 
        

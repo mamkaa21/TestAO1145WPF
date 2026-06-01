@@ -20,6 +20,27 @@ namespace TestAO1145WPF.ViewModel
             }
         }
 
+        private Class clas {  get; set; }
+        public Class Clas
+        {
+            get => clas;
+            set
+                { clas = value;
+            Signal(nameof(Clas));
+            }
+        }
+
+        private List<Class> classlist { get; set; }
+        public List<Class> ClassList
+        {
+            get => classlist;
+            set
+            {
+                classlist = value;
+                Signal(nameof(ClassList));
+            }
+        }
+
         public UserTWinVM()
         {
 

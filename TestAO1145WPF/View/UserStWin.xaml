@@ -3,10 +3,48 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TestAO1145WPF.View"
+                     xmlns:local="clr-namespace:TestAO1145WPF.View"
+xmlns:m="clr-namespace:TestAO1145WPF.Model"
+xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
         mc:Ignorable="d"
-        Title="UserStWin" Height="450" Width="800">
+               DataContext="{DynamicResource vm}"
+Title="Окно профиля" Height="450" Width="800">
+    <Window.Resources >
+        <vm:UserStWinVM x:Key ="vm"/>
+    </Window.Resources >
     <Grid>
-        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="150"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2" >
+                <Button Content="назад " Command="{Binding Back}" Background="White" BorderBrush="White"/>
+                <Button Content="Окно ре-тов " Command="{Binding OpenResultWin}" Background="White" BorderBrush="White"/>
+                <Button Content=" Все тесты " Command="{Binding OpenAllTestWin}" Background="White" BorderBrush="White"/>
+                <Button Content=" Новый тест" Command="{Binding OpenNewTestWin}" Background="White" BorderBrush="White"/>
+            </StackPanel>
+            <Image  Width="150" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="1" />
+            <Label  Width="150" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="1"/>
+            <Label Content="Студент "  FontSize="20"   Grid.Row="2"  />
+            <TextBox Text="{Binding Student.LastName}" BorderBrush="White"   IsEnabled="{Binding ListBoxEnabled}" Grid.Row="2" Grid.Column="1" 
+              Height="30" VerticalAlignment="Top"/>
+            <TextBox Text="{Binding Student.FirstName}"  BorderBrush="White"   IsEnabled="{Binding ListBoxEnabled}" Grid.Row="2" Grid.Column="2" 
+              Height="30" VerticalAlignment="Top"/>
+            <Label Content="Группа "  FontSize="20"   Grid.Row="3"  />
+            <TextBox Text="{Binding Student.IdClass}"  BorderBrush="White"   IsEnabled="{Binding ListBoxEnabled}" Grid.Row="3" Grid.Column="1" 
+              Height="30" VerticalAlignment="Top"/>
+            <!-- как-то вытянуть класс ученика -->         
+        </Grid>
     </Grid>
 </Window>

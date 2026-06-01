@@ -22,31 +22,31 @@ Title="Окно профиля" Height="450" Width="800">
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="150"/>
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
            
         </Grid.ColumnDefinitions>
-        <Button Content="  назад  " Command="{Binding Back}" HorizontalAlignment="Left" Background="White" BorderBrush="White"/>
-        <Image  Width="150" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="1"/>
+        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2" >
+            <Button Content="назад " Command="{Binding Back}" Background="White" BorderBrush="White"/>
+            <Button Content="Окно ре-тов " Command="{Binding OpenResultWin}" Background="White" BorderBrush="White"/>
+            <Button Content=" Все тесты " Command="{Binding OpenAllTestWin}" Background="White" BorderBrush="White"/>
+            <Button Content=" Новый тест" Command="{Binding OpenNewTestWin}" Background="White" BorderBrush="White"/>
+        </StackPanel>
+        <Image  Width="150" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="1" /> 
+        <Label  Width="150" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="1"/>
         <Label Content="Преподаватель "  FontSize="20"   Grid.Row="2"  />
+     
         <TextBox Text="{Binding Teacher.LastName}" BorderBrush="White"   IsEnabled="{Binding ListBoxEnabled}" Grid.Row="2" Grid.Column="1" 
                  Height="30" VerticalAlignment="Top"/>
         <TextBox Text="{Binding Teacher.FirstName}"  BorderBrush="White"   IsEnabled="{Binding ListBoxEnabled}" Grid.Row="2" Grid.Column="2" 
                  Height="30" VerticalAlignment="Top"/>
-            <Label Content="Группы"  Grid.Row="3"  />
-        <ListBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="2" ItemsSource="{Binding ClassList}" SelectedItem="{Binding Class}">
+        <Label Content="Группы"  Grid.Row="3" FontSize="20" />
+        <ListBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="2" ItemsSource="{Binding ClassList}" SelectedItem="{Binding Clas}">
             <ListBoxItem>
-                <TextBlock Text="{Binding Number}"/>
+                <TextBlock Text="{Binding Clas.Number}"/>
             </ListBoxItem>
         </ListBox>
-
-
-
-
-
-
-        <Button Content="Сохранить изменения" Width="150" HorizontalAlignment="Center" Margin="0 24 0 0" Command="{Binding SaveChangedByUserWin}" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>
