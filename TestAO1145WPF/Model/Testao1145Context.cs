@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql.Scaffolding.Internal;
-using TestAO1145WPF.Model;
 
-namespace TestAO1145WPF;
+namespace TestAO1145WPF.Model;
 
 public partial class Testao1145Context : DbContext
 {
@@ -119,6 +118,7 @@ public partial class Testao1145Context : DbContext
             entity.Property(e => e.Id)
                 .ValueGeneratedNever()
                 .HasColumnType("int(11)");
+            entity.Property(e => e.CountQ).HasColumnType("int(11)");
             entity.Property(e => e.Number).HasColumnType("int(11)");
         });
 
@@ -189,6 +189,7 @@ public partial class Testao1145Context : DbContext
             entity.Property(e => e.IdTest)
                 .HasColumnType("int(11)")
                 .HasColumnName("Id_Test");
+            entity.Property(e => e.Mark).HasColumnType("int(11)");
 
             entity.HasOne(d => d.IdStudentNavigation).WithMany(p => p.Studentanswers)
                 .HasForeignKey(d => d.IdStudent)
@@ -283,6 +284,7 @@ public partial class Testao1145Context : DbContext
             entity.Property(e => e.Id)
                 .ValueGeneratedNever()
                 .HasColumnType("int(11)");
+            entity.Property(e => e.CountQuestionTest).HasColumnType("int(11)");
             entity.Property(e => e.IdMark)
                 .HasColumnType("int(11)")
                 .HasColumnName("Id_Mark");
@@ -309,21 +311,42 @@ public partial class Testao1145Context : DbContext
 
         modelBuilder.Entity<Testcrossquestion>(entity =>
         {
+            entity.HasKey(e => new { e.IdStudent, e.IdQuestion, e.IdAnswer })
+                .HasName("PRIMARY")
+                .HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0, 0 });
+
             entity
-                .HasNoKey()
                 .ToTable("testcrossquestion")
                 .UseCollation("utf8mb4_unicode_ci");
 
+            entity.HasIndex(e => e.IdAnswer, "FK_testcrossquestion_answer_Id");
+
             entity.HasIndex(e => e.IdQuestion, "FK_testcrossquestion_question_Id");
 
-            entity.HasIndex(e => e.IdTest, "FK_testcrossquestion_test_Id");
-
+            entity.Property(e => e.IdStudent)
+                .HasColumnType("int(11)")
+                .HasColumnName("Id_Student");
             entity.Property(e => e.IdQuestion)
                 .HasColumnType("int(11)")
                 .HasColumnName("Id_Question");
-            entity.Property(e => e.IdTest)
+            entity.Property(e => e.IdAnswer)
                 .HasColumnType("int(11)")
-                .HasColumnName("Id_Test");
+                .HasColumnName("Id_Answer");
+
+            entity.HasOne(d => d.IdAnswerNavigation).WithMany(p => p.Testcrossquestions)
+                .HasForeignKey(d => d.IdAnswer)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_testcrossquestion_answer_Id");
+
+            entity.HasOne(d => d.IdQuestionNavigation).WithMany(p => p.Testcrossquestions)
+                .HasForeignKey(d => d.IdQuestion)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_testcrossquestion_question_Id");
+
+            entity.HasOne(d => d.IdStudentNavigation).WithMany(p => p.Testcrossquestions)
+                .HasForeignKey(d => d.IdStudent)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_testcrossquestion_studentanswer_Id");
         });
 
         modelBuilder.Entity<Testcrossteacher>(entity =>

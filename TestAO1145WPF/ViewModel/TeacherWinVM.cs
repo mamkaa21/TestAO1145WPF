@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TestAO1145WPF.View;
+using TestAO1145WPF.Model;
 
 namespace TestAO1145WPF.ViewModel
 {

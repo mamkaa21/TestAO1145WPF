@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TestAO1145WPF;
+namespace TestAO1145WPF.Model;
 
-public partial class Question
+public partial class Question // сделать вопросы и ответы чисто модеькаи и все
 {
     public int Id { get; set; }
 
@@ -11,7 +11,5 @@ public partial class Question
 
     public int? IdTest { get; set; }
 
-    public virtual ICollection<Aswer> Aswers { get; set; } = new List<Aswer>();
-
-    public virtual Test? IdTestNavigation { get; set; }
+    public virtual ICollection<Answer> Answers { get; set; } = new List<Answer>();
 }

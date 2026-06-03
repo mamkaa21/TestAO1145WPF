@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TestAO1145WPF;
+namespace TestAO1145WPF.Model;
 
 public partial class Studentanswer
 {
@@ -13,7 +13,11 @@ public partial class Studentanswer
 
     public DateTime? DateTime { get; set; }
 
+    public int? Mark { get; set; }
+
     public virtual Student? IdStudentNavigation { get; set; }
 
     public virtual Test? IdTestNavigation { get; set; }
+
+    public virtual ICollection<Testcrossquestion> Testcrossquestions { get; set; } = new List<Testcrossquestion>();
 }

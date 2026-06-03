@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace TestAO1145WPF.ViewModel
 {
-    class Command : ICommand
+    public class Command : ICommand
     {
         Action action;
         public Command(Action action)

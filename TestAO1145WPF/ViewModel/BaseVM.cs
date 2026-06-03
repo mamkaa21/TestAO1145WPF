@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace TestAO1145WPF.ViewModel
 {
-    class BaseVM : INotifyPropertyChanged
+   public class BaseVM : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TestAO1145WPF;
+namespace TestAO1145WPF.Model;
 
 public partial class Admin
 {

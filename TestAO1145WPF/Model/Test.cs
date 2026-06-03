@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TestAO1145WPF;
+namespace TestAO1145WPF.Model;
 
 public partial class Test
 {
@@ -14,6 +14,8 @@ public partial class Test
     public int? IdMark { get; set; }
 
     public int? IdTeacher { get; set; }
+
+    public int? CountQuestionTest { get; set; }
 
     public virtual Mark? IdMarkNavigation { get; set; }
 

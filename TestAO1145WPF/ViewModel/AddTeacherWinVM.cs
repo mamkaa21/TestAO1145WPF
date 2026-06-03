@@ -1,17 +1,13 @@
-﻿using Microsoft.Extensions.Options;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
-using System.Windows.Controls.Primitives;
 using TestAO1145WPF.Model;
-using TestAO1145WPF.View;
 
 namespace TestAO1145WPF.ViewModel
 {
-   public class AdminWinVM : BaseVM
+    public class AddTeacherWinVM: BaseVM
     {
         private Teacher teacher { get; set; }
         public Teacher Teacher
@@ -73,37 +69,9 @@ namespace TestAO1145WPF.ViewModel
                 Signal(nameof(SubjectList));
             }
         }
-
-        AdminWin adminWin;
-        public Command OpenAddTeacher { get; }
-        //public Command OpenEditTeacher { get; }
-        //public Command OpenAddNewStudent { get; }
-        public Command OpenDelete { get; }
-        //public Command OpenDeleteT { get; }
-        //public Command OpenDeleteST { get; }
-
-        JsonSerializerOptions options = new JsonSerializerOptions();
-        public AdminWinVM() {
-            //тут добавить метод получения учителей студентов и предметов с апи 
-            OpenAddTeacher = new Command(async () =>
-            {
-                AddTeacherWin    addTeacherWin = new AddTeacherWin();
-                addTeacherWin.Show();
-                Signal();
-                
-            });
-            OpenDelete = new Command(async () =>
-            {
-                //MainWindow mainWindow = new MainWindow();
-                //mainWindow.Show();
-                Signal();
-
-            });
-        }
-         
-        internal void SetWindow(AdminWin adminWin)
+        public AddTeacherWinVM()
         {
-            this.adminWin = adminWin;
+
         }
     }
 }
