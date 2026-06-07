@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using TestAO1145WPF.Model;
 using TestAO1145WPF.View;
-//using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace TestAO1145WPF.ViewModel
 {
@@ -47,7 +46,7 @@ namespace TestAO1145WPF.ViewModel
                     var token = await responce.Content.ReadAsStringAsync();
                     HttpClients.SetToken(token);
                     responce = await HttpClients.HttpClient.GetAsync($"Students");
-                    var d = await responce.Content.ReadFromJsonAsync<StModel>();
+                    //var d = await responce.Content.ReadFromJsonAsync<StModel>();
                     MessageBox.Show("Оk");
                     return;
                     //if (d.RoleId == 1) //сначала лезем к студентам ищем потом к учителям потом к админу

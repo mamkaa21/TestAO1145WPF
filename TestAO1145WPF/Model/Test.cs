@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 
 namespace TestAO1145WPF.Model;
-
 public partial class Test
 {
     public int Id { get; set; }
@@ -11,13 +10,9 @@ public partial class Test
 
     public int? IdSubject { get; set; }
 
-    public int? IdMark { get; set; }
-
     public int? IdTeacher { get; set; }
 
     public int? CountQuestionTest { get; set; }
-
-    public virtual Mark? IdMarkNavigation { get; set; }
 
     public virtual Subject? IdSubjectNavigation { get; set; }
 

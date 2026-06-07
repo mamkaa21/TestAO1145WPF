@@ -9,13 +9,9 @@ public partial class Class
 
     public int? Number { get; set; }
 
-    public int? IdStudent { get; set; }
-
     public int? IdTeacher { get; set; }
-
-    public virtual Student? IdStudentNavigation { get; set; }
 
     public virtual Teacher? IdTeacherNavigation { get; set; }
 
-    public virtual ICollection<Teacher> Teachers { get; set; } = new List<Teacher>();
+    public virtual ICollection<Student> Students { get; set; } = new List<Student>();
 }

@@ -12,7 +12,7 @@
     <Window.Resources>
         <vm:EnterWinVM x:Key ="vm"/>
     </Window.Resources>
-    <Grid>
+    <Grid Background="PeachPuff" Cursor="">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -30,11 +30,17 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Label Grid.Column="1" Grid.Row="2" Content="Логин" FontSize="25"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
-        <TextBox Text="{Binding Student.Login}" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="2" Margin="0 20 0 20"/>
-        <Label Grid.Column="1" Grid.Row="3"  Content="Пароль"  FontSize="25"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
-        <TextBox Text="{Binding Student.Password}" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="3" Margin="0 20 0 20"/>
+        <Label Grid.Column="1" Grid.Row="2" Content="Логин"  HorizontalAlignment="Right" 
+               VerticalAlignment="Center" FontFamily="Impact" FontSize="25" Foreground="#FF7F3838"/>
+        <TextBox Text="{Binding Student.Login}" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="2" Margin="0 20 0 20" 
+                 FontFamily="Impact" FontSize="15" Foreground="#FF7F3838"/>
+        <Label Grid.Column="1" Grid.Row="3"  Content="Пароль"  FontFamily="Impact" FontSize="24" 
+               HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FF7F3838" />
+        <TextBox Text="{Binding Student.Password}" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="3" Margin="0 20 0 20" 
+                 FontFamily="Impact" FontSize="25" Foreground="#FF7F3838" >
+        </TextBox>
         <!--<PasswordBox x:Name="passwordBox" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="3" Margin="0 20 0 20" />-->
-        <Button Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2" Content="Войти" FontSize="30" Margin="10" Command="{Binding Enter}"/>
+        <Button Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2" Content="Войти" Margin="10" Command="{Binding Enter}"
+                FontFamily="Impact" FontSize="30" Foreground="#FF7F3838" Background="PeachPuff" BorderBrush="PeachPuff"/>
     </Grid>
 </Window>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace TestAO1145WPF.Model;
 
-public partial class Question // сделать вопросы и ответы чисто модеькаи и все
+public partial class Question
 {
     public int Id { get; set; }
 
@@ -12,4 +12,8 @@ public partial class Question // сделать вопросы и ответы �
     public int? IdTest { get; set; }
 
     public virtual ICollection<Answer> Answers { get; set; } = new List<Answer>();
+
+    public virtual Test? IdTestNavigation { get; set; }
+
+    public virtual ICollection<Testcrossquestion> Testcrossquestions { get; set; } = new List<Testcrossquestion>();
 }

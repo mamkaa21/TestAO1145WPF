@@ -8,21 +8,24 @@
          xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel" xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
         mc:Ignorable="d"
         DataContext="{DynamicResource vm}"
-        Title="Главное окно" Height="450" Width="800">
+        Title="Окно студента" Height="450" Width="800" >
     <Window.Resources >
         <vm:MainWinVM x:Key ="vm"/>
     </Window.Resources >
-    <Grid>
+    <Grid Background="BlanchedAlmond">
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" >
-            <Button Content="Окно ре-тов " HorizontalAlignment="Left" Command="{Binding OpenResultWin}" Background="White" BorderBrush="White"/>
-            <Button Content=" Все тесты "  HorizontalAlignment="Left" Command="{Binding OpenAllTestWin}" Background="White" BorderBrush="White"/>
-            <Button Content=" Окно профиля"  HorizontalAlignment="Left" Command="{Binding OpenUserStWin}" Background="White" BorderBrush="White"/>
+        <StackPanel Orientation="Horizontal" Background="PeachPuff">
+            <Button Content="Окно ре-тов " HorizontalAlignment="Left" Command="{Binding OpenResultWin}" 
+                    Background="PeachPuff" BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838"/>
+            <Button Content=" Все тесты "  HorizontalAlignment="Left" Command="{Binding OpenAllTestWin}" 
+                    Background="PeachPuff" BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838"/>
+            <Button Content=" Окно профиля"  HorizontalAlignment="Left" Command="{Binding OpenUserStWin}" 
+                    Background="PeachPuff" BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838"/>
         </StackPanel>
-        <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.Row="2"
+        <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.Row="2" Background="PapayaWhip"
                     ItemsSource="{Binding TeacherList}" SelectedItem="{Binding Teacher}" x:Name="UserMenuLB" Height="405">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="MouseDoubleClick">
@@ -39,8 +42,8 @@
                         <ListBox.ItemTemplate >
                             <DataTemplate >
                                 <StackPanel >
-                                    <TextBlock  Text="{Binding FirstName}"/>
-                                    <TextBlock  Text="{Binding LastName}"/>
+                        <TextBlock  Text="{Binding FirstName}" Foreground="#FF7F3838"/>
+                        <TextBlock  Text="{Binding LastName}" Foreground="#FF7F3838"/>
 
 
                                     <!--тут дальше все айди я хз как вытануть-->

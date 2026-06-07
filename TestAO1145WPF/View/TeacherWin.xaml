@@ -13,22 +13,19 @@
     <Window.Resources >
         <vm:TeacherWinVM x:Key ="vm"/>
     </Window.Resources >
-    <Grid>
+    <Grid Background="BlanchedAlmond">
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" >
-            <Button Content="Окно ре-тов " Command="{Binding OpenResultWin}" Background="White" BorderBrush="White"/>
-            <Button Content=" Все тесты " Command="{Binding OpenAllTestWin}" Background="White" BorderBrush="White"/>
-            <Button Content=" Новый тест" Command="{Binding OpenNewTestWin}" Background="White" BorderBrush="White"/>
-            <Button Content=" Окно профиля" Command="{Binding OpenUserTWin}" Background="White" BorderBrush="White"  />
+            <Button Content="Окно ре-тов " Command="{Binding OpenResultWin}" />
+            <Button Content=" Все тесты " Command="{Binding OpenAllTestWin}" />
+            <Button Content=" Новый тест" Command="{Binding OpenNewTestWin}" />
+            <Button Content=" Окно профиля" Command="{Binding OpenUserTWin}"  />
         </StackPanel>
-        <TabControl Grid.Row="1">
-            <TabItem  Header="Тесты">
-                <StackPanel>
-                    <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible"
-     ItemsSource="{Binding TestList}" SelectedItem="{Binding Test}" x:Name="UserMenuL" Height="405">
+        <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible" Background="BlanchedAlmond"
+     ItemsSource="{Binding TestList}" SelectedItem="{Binding Test}" x:Name="UserMenuL" Height="405" Grid.Row="2">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="MouseDoubleClick">
                                 <i:InvokeCommandAction Command="{Binding DoubleClickCommand}"
@@ -54,8 +51,6 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                </StackPanel>
-            </TabItem>
-        </TabControl>
+      
     </Grid>
 </Window>

@@ -13,7 +13,9 @@ public partial class Studentanswer
 
     public DateTime? DateTime { get; set; }
 
-    public int? Mark { get; set; }
+    public int? IdMark { get; set; }
+
+    public virtual Mark? IdMarkNavigation { get; set; }
 
     public virtual Student? IdStudentNavigation { get; set; }
 
