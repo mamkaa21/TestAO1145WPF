@@ -12,7 +12,7 @@
     <Window.Resources>
         <vm:EnterWinVM x:Key ="vm"/>
     </Window.Resources>
-    <Grid Background="PeachPuff" Cursor="">
+    <Grid Background="BlanchedAlmond" Cursor="">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -41,6 +41,6 @@
         </TextBox>
         <!--<PasswordBox x:Name="passwordBox" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="3" Margin="0 20 0 20" />-->
         <Button Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2" Content="Войти" Margin="10" Command="{Binding Enter}"
-                FontFamily="Impact" FontSize="30" Foreground="#FF7F3838" Background="PeachPuff" BorderBrush="PeachPuff"/>
+                FontFamily="Impact" FontSize="30" Foreground="#FF7F3838" Background="BlanchedAlmond" BorderBrush="BlanchedAlmond"/>
     </Grid>
 </Window>

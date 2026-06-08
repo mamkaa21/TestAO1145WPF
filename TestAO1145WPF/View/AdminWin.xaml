@@ -12,28 +12,60 @@ xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
     Title="Главное окно" Height="450" Width="800">
     <Window.Resources >
         <vm:AdminWinVM x:Key ="vm"/>
+        <Style TargetType="{x:Type TabItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <!-- Border — это сама "шапка" вкладки -->
+                        <Border Name="Border"  
+                            SnapsToDevicePixels="True">
+                            <!-- Текст внутри вкладки -->
+                            <ContentPresenter x:Name="ContentSite"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Center"
+                                          ContentSource="Header"
+                                          Margin="12,2,12,2"
+                                          RecognizesAccessKey="True"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <!-- КОГДА ВКЛАДКА ВЫБРАНА -->
+                            <Trigger Property="IsSelected" Value="True">
+                                <!-- Здесь меняем цвет фона на тот же, что и у панели (или другой) -->
+                                <Setter TargetName="Border" Property="Background" Value="#FFDAB9"/>
+                            </Trigger>
+                            <!-- КОГДА МЫШКА НАВЕДЕНА (Hover) -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#FFCC99"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources >
-    <Grid>
+    <Grid Background="PeachPuff">
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Menu>
-      <MenuItem Header="Создать">
-                <MenuItem Header="Добавить" Command="{Binding OpenAddTeacher}" />
+        <Menu Background="PeachPuff">
+            <MenuItem Header="Создать" 
+                       BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838">
+                <MenuItem Header="Добавить" Command="{Binding OpenAddTeacher}"  
+                          Background="PeachPuff" BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838"/>
                 <!--<MenuItem Header="Изменить" Command="{Binding OpenAddStudent}"/>
                 <MenuItem Header="Изменить" Command="{Binding OpenAddSubject}"/>-->
             </MenuItem>
-            <MenuItem Header="Удалить">
+            <MenuItem Header="Удалить" BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838">
                 <MenuItem Header="Добавить" Command="{Binding OpenDelete}" />
                 <!--<MenuItem Header="Изменить" Command="{Binding OpenDeleteT}"/>
                 <MenuItem Header="Изменить" Command="{Binding OpenDeleteSt}"/>-->
             </MenuItem>
-        </Menu> 
-        <TabControl Grid.Row="1">
-            <TabItem  Header="Преподаватели">
-                <StackPanel>
-                    <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible"
+        </Menu>
+        <TabControl Grid.Row="1" Background="PeachPuff" Grid.ColumnSpan="4">
+            <TabItem  Header="Преподаватели"  Background="PeachPuff" BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838" OpacityMask="Black">
+                <StackPanel >
+                    <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible" Background="PapayaWhip"
                     ItemsSource="{Binding TeacherList}" SelectedItem="{Binding Teacher}" x:Name="UserMenuLB" Height="405">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="MouseDoubleClick">
@@ -62,7 +94,7 @@ xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
                     </ListBox>
                 </StackPanel>
             </TabItem>
-            <TabItem  Header="Студенты">
+            <TabItem  Header="Студенты"  Background="PeachPuff" BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838">
                 <StackPanel>
                     <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible"
      ItemsSource="{Binding StudentList}" SelectedItem="{Binding Student}" x:Name="UserMenuL" Height="405">
@@ -93,7 +125,7 @@ xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
                     </ListBox>
                 </StackPanel>
             </TabItem>
-            <TabItem Header="Предметы">
+            <TabItem Header="Предметы"  Background="PeachPuff" BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838">
                 <StackPanel>
                     <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible"
 ItemsSource="{Binding SubjectList}" SelectedItem="{Binding Subject}" x:Name="UserMenu" Height="405">

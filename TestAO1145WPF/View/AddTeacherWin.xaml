@@ -15,7 +15,7 @@ xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
     </Window.Resources >
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="25"/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -25,7 +25,7 @@ xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition />
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -33,6 +33,15 @@ xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <Menu Background="PeachPuff">
+            <MenuItem Header="Создать" 
+               BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838">
+                <MenuItem Header="Добавить" Command="{Binding OpenAddTeacher}"  
+                  Background="PeachPuff" BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838"/>
+                <!--<MenuItem Header="Изменить" Command="{Binding OpenAddStudent}"/>
+        <MenuItem Header="Изменить" Command="{Binding OpenAddSubject}"/>-->
+            </MenuItem>
+        </Menu>
         <TabControl Grid.Row="1" Grid.ColumnSpan="7" Grid.RowSpan="7">
             <TabItem  Header="Преподаватели">
                 <StackPanel >
