@@ -73,8 +73,7 @@ namespace TestAO1145WPF.ViewModel
             });
                      
         }
-
-       
+     
         EnterWin enterWindow;
         internal void SetWindow(EnterWin enterWindow)
         {

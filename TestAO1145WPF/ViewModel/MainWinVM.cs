@@ -33,23 +33,23 @@ namespace TestAO1145WPF.ViewModel
         }
 
 
-        public Command OpenResultWin { get; }
-        public Command OpenAllTestWin { get; }
+        public Command OpenResultForOneStWin { get; }
+        public Command OpenAllTestForOneStWin { get; }
         public Command OpenUserStWin { get; }
         public ICommand DoubleClickCommand { get; private set; }
         public MainWinVM()
         {
-            OpenResultWin = new Command(async () =>
+            OpenResultForOneStWin = new Command(async () =>
             {
-                //ResultWin resultWin = new ResultWin();
-                //resultWin.Show();
-                //Signal();   
+                ResultForOneStWin resultWin = new ResultForOneStWin();
+                resultWin.Show();
+                Signal();
             });
-            OpenAllTestWin = new Command(async () =>
+            OpenAllTestForOneStWin = new Command(async () =>
             {
-                //AllTestWin  allTestWin  = new AllTestWin ();
-                //allTestWin.Show();
-                //Signal();   
+                AllTestForOneStWin allTestWin = new AllTestForOneStWin();
+                allTestWin.Show();
+                Signal();
             });
             OpenUserStWin = new Command(async () =>
             {
@@ -57,19 +57,22 @@ namespace TestAO1145WPF.ViewModel
                 userStWin.Show();
                 Signal();
             });
-            DoubleClickCommand = new RelayCommand(DoubleClickExecute);
+            //DoubleClickCommand = new RelayCommand(DoubleClickExecute);
+            //сюда метод с апи геталлтест
         }
 
-        private void DoubleClickExecute(object parameter)
-        {
+        //private void DoubleClickExecute(object parameter)
+        //{
 
-            if (parameter is Test Test)
-            {
-                //TestWin goodWin = new TestWin(Test);
-                //goodWin.Show();
-                //Signal();
-            }
-        }
+        //    if (parameter is Test Test)
+        //    {
+        //        TestWin goodWin = new TestWin(Test);
+        //        goodWin.Show();
+        //        Signal();
+        //    }
+        //}
+
+
         MainWindow mainWindow;
         internal void SetWindow(MainWindow mainWindow)
         {

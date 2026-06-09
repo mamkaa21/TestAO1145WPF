@@ -33,30 +33,39 @@ namespace TestAO1145WPF.ViewModel
         }
         public Command OpenResultWin { get; }
         public Command OpenAllTestWin { get; }
-        public Command OpenUserStWin { get; }
+        public Command OpenUserTWin { get; }
+        public Command OpenNewTestWin { get; }
         public ICommand DoubleClickCommand { get; private set; }
 
         public TeacherWinVM()
         {
             OpenResultWin = new Command(async () =>
             {
-                //ResultWin resultWin = new ResultWin();
-                //resultWin.Show();
-                //Signal();   
+                ResultWin resultWin = new ResultWin();
+                resultWin.Show();
+                Signal();
             });
             OpenAllTestWin = new Command(async () =>
             {
-                //AllTestWin  allTestWin  = new AllTestWin ();
-                //allTestWin.Show();
-                //Signal();   
+                AllTestWin allTestWin = new AllTestWin();
+                allTestWin.Show();
+                Signal();
             });
-            OpenUserStWin = new Command(async () =>
+            OpenUserTWin = new Command(async () =>
             {
-                UserStWin userStWin = new UserStWin();
-                userStWin.Show();
+                UserTWin usertWin = new UserTWin();
+                usertWin.Show();
+                Signal();
+            });
+            OpenNewTestWin = new Command(async () =>
+            {
+                CreateTestWin createTestWin = new CreateTestWin();
+                createTestWin.Show();
                 Signal();
             });
             DoubleClickCommand = new RelayCommand(DoubleClickExecute);
+
+            //сюда тоже геталлтест
         }
 
         private void DoubleClickExecute(object parameter)
