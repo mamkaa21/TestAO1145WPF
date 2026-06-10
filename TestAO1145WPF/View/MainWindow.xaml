@@ -26,7 +26,7 @@
                     Background="PeachPuff" BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838"/>
         </StackPanel>
         <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.Row="2" Background="PapayaWhip"
-                    ItemsSource="{Binding TeacherList}" SelectedItem="{Binding Teacher}" x:Name="UserMenuLB" Height="405">
+                    ItemsSource="{Binding TestList}" SelectedItem="{Binding Test}" x:Name="UserMenuLB" Height="405">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="MouseDoubleClick">
                                 <i:InvokeCommandAction Command="{Binding DoubleClickCommand}"
@@ -42,11 +42,10 @@
                         <ListBox.ItemTemplate >
                             <DataTemplate >
                                 <StackPanel >
-                        <TextBlock  Text="{Binding FirstName}" Foreground="#FF7F3838"/>
-                        <TextBlock  Text="{Binding LastName}" Foreground="#FF7F3838"/>
-
-
-                                    <!--тут дальше все айди я хз как вытануть-->
+                        <TextBlock  Text="{Binding Name}" Foreground="#FF7F3838"/>
+                        <TextBlock  Text="{Binding IdTeacherNavigation.LastName}" Foreground="#FF7F3838"/>
+                                    
+                        <!--тут дальше все айди я хз как вытануть-->
 
                                 </StackPanel>
                             </DataTemplate>

@@ -35,11 +35,8 @@ Title="Окно профиля" Height="450" Width="800">
                         Background="PeachPuff"  FontFamily="Impact" FontSize="15" Foreground="#FF7F3838" BorderThickness ="0"/>
                 <Button Content=" Все тесты " Command="{Binding OpenAllTestWin}"  
                         Background="PeachPuff"  FontFamily="Impact" FontSize="15" Foreground="#FF7F3838" BorderThickness ="0"/>
-                <Button Content=" Новый тест" Command="{Binding OpenNewTestWin}"  
-                        Background="PeachPuff"  FontFamily="Impact" FontSize="15" Foreground="#FF7F3838" BorderThickness ="0"/>
             </StackPanel>
-            <Image  Width="150" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="1"  />
-            <Label  Width="150" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="1" BorderBrush="#FF7F3838" BorderThickness="2" Padding="6 6 6 6"/>
+            
             <Label Content="Студент " FontFamily="Impact" FontSize="20" Foreground="#FF7F3838"  Grid.Row="2"  />
             <TextBox Text="{Binding Student.LastName}" Background="PapayaWhip"
                      BorderThickness="0 0 0 2" BorderBrush="#FF7F3838"   IsEnabled="{Binding ListBoxEnabled}" Grid.Row="2" Grid.Column="1" 

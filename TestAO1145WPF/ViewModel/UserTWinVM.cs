@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TestAO1145WPF.Model;
+using TestAO1145WPF.View;
 
 namespace TestAO1145WPF.ViewModel
 {
@@ -40,10 +41,29 @@ namespace TestAO1145WPF.ViewModel
                 Signal(nameof(ClassList));
             }
         }
+        public Command OpenResultWin { get; }
+        public Command OpenAllTestWin { get; }
+        public Command Back { get; }
 
         public UserTWinVM()
         {
+            OpenResultWin = new Command(async () =>
+            {
+                ResultWin resultWin = new ResultWin();
+                resultWin.Show();
+                Signal();
+            });
+            OpenAllTestWin = new Command(async () =>
+            {
+                AllTestWin allTestWin = new AllTestWin();
+                allTestWin.Show();
+                Signal();
+            });                  
+            Back = new Command(async () =>
+            {
 
+            });
+            //сюда метод геттеаче
         }
     }
 }

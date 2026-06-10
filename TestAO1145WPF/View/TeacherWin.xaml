@@ -45,10 +45,8 @@
             <ListBox.ItemTemplate >
                 <DataTemplate >
                     <StackPanel >
-                        <!--<TextBlock  Text="{Binding FirstName}"/>
-                                    <TextBlock  Text="{Binding LastName}"/>-->
-
-
+                        <TextBlock  Text="{Binding Name}"/>
+                       
                         <!--тут дальше все айди я хз как вытануть-->
 
                     </StackPanel>

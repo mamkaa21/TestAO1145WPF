@@ -180,6 +180,7 @@ xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
             <TabItem Header="Преподаватели"  Background="PeachPuff" Margin="0 0 0 -2"
                       FontFamily="Impact" FontSize="15" Foreground="#FF7F3838">
                 <StackPanel >
+                    
                     <Label Content="Фамилия"  Foreground="#FF7F3838"/>
                     <TextBox Text="{Binding Teacher.LastName}" Foreground="#FF7F3838" BorderThickness="0 0 0 1" BorderBrush="#FF7F3838"  Background="PapayaWhip"/>
                     <Label Content="Имя" Foreground="#FF7F3838"/>
@@ -217,7 +218,7 @@ xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
                     <Label Content="Название" Foreground="#FF7F3838"/>
                     <TextBox Text="{Binding Subject.Name}" Grid.Column="1" Grid.ColumnSpan="2" 
                              Foreground="#FF7F3838" BorderThickness="0 0 0 1" BorderBrush="#FF7F3838"  Background="PapayaWhip"/>
-                    <Button Content="добавить" Command="{Binding AddSubj}" 
+                    <Button Content="добавить" Command="{Binding SaveSubj}" 
                             Margin="0 25 0 0" Foreground="#FF7F3838"  Background="{x:Null}" BorderBrush="{x:Null}" />
                     <Button Content="обновить" Command="{Binding EditSubj}" 
                             BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FF7F3838"/>
@@ -229,7 +230,7 @@ xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
                     <Label Content="Номер" Foreground="#FF7F3838"/>
                     <TextBox Text="{Binding Clas.Number}" 
               Foreground="#FF7F3838" BorderThickness="0 0 0 1" BorderBrush="#FF7F3838"  Background="PapayaWhip"/>
-                    <Button  Content="добавить" Command="{Binding AddCl}" 
+                    <Button  Content="добавить" Command="{Binding SaveCl}" 
              Margin="0 25 0 0" Foreground="#FF7F3838"  Background="{x:Null}" BorderBrush="{x:Null}" />
                     <Button Grid.Column="2" Grid.Row="5"  Content="обновить" Command="{Binding EditCl}" 
              BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FF7F3838"/>
