@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TestAO1145WPF.ViewModel;
 
 namespace TestAO1145WPF.View
 {
@@ -19,9 +20,10 @@ namespace TestAO1145WPF.View
     /// </summary>
     public partial class UserStWin : Window
     {
-        public UserStWin()
+        public UserStWin(Model.Student student)
         {
             InitializeComponent();
+            (DataContext as UserStWinVM).Student = student;
         }
     }
 }

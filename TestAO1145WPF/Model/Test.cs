@@ -12,6 +12,8 @@ public partial class Test
 
     public int? IdTeacher { get; set; }
 
+    public string Teacher { get; set; }
+
     public int? CountQuestionTest { get; set; }
 
     public virtual Subject? IdSubjectNavigation { get; set; }

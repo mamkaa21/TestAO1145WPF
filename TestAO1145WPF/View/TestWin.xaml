@@ -4,9 +4,57 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestAO1145WPF.View"
+        xmlns:m="clr-namespace:TestAO1145WPF.Model"
+        xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel" 
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
         mc:Ignorable="d"
-        Title="TestWin" Height="450" Width="800">
-    <Grid>
-        
+        DataContext="{DynamicResource vm}"
+    Title="Окно теста" Height="450" Width="800" >
+    <Window.Resources >
+        <vm:TestWinVM x:Key ="vm"/>
+    </Window.Resources >
+    <Grid Background="PapayaWhip" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="4"  Background="PeachPuff" >
+            <Button Content="назад " Command="{Binding Back}" 
+             Background="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838" BorderThickness ="0"/>
+            <!--<Button Content="Окно ре-тов " Command="{Binding OpenResultWin}"  
+             Background="PeachPuff"  FontFamily="Impact" FontSize="15" Foreground="#FF7F3838" BorderThickness ="0"/>
+            <Button Content=" Все тесты " Command="{Binding OpenAllTestWin}"  
+             Background="PeachPuff"  FontFamily="Impact" FontSize="15" Foreground="#FF7F3838" BorderThickness ="0"/>
+            <Button Content=" Окно профиля"  HorizontalAlignment="Left" Command="{Binding OpenUserStWin}" 
+               Background="PeachPuff" BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838"/>-->
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <Label Content="Название теста" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838" />
+            <Label Content="{Binding Test.Name}" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838" Width="250"/>
+        </StackPanel>
+        <ListBox ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.Row="2" Background="PapayaWhip"                    
+                    ItemsSource="{Binding QuestionList}" SelectedItem="{Binding Question}" x:Name="UserMenuLB" >
+                 <ListBox.ItemTemplate >
+                <DataTemplate >
+                    <StackPanel >
+                        <TextBlock  Text="{Binding Name}"  FontFamily="Impact" FontSize="15" Foreground="#FF7F3838"/>
+                        <ItemsControl Margin="20 0 0 0"  ItemsSource="{Binding Answers}"  FontFamily="Impact" FontSize="15" Foreground="#FF7F3838">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <CheckBox Content="{Binding Text}"
+                                              IsChecked="{Binding IsChecked}" Foreground="#FF7F3838"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                       
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            </ListBox>
+            <Button Content="Завершить" Command="{Binding Post}" Grid.Row="3" HorizontalAlignment="Center"
+               Background="{x:Null}" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838" BorderBrush="{x:Null}"/>
+       
     </Grid>
 </Window>

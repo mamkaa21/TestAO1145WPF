@@ -29,6 +29,7 @@ namespace TestAO1145WPF.ViewModel
                 //enterWindow.Close();
 
                 //возможно стоит сделать таблицу юзера и таблицу ролей и разделять учителей и студентов так я хз 
+                Student.Password = enterWindow.passwordBox.Password;
                 string arg = JsonSerializer.Serialize(Student);
                 var responce = await HttpClients.HttpClient.PostAsync($"Auth/CheckAccountIsExist", new StringContent(arg, Encoding.UTF8, "application/json"));
 
@@ -43,11 +44,25 @@ namespace TestAO1145WPF.ViewModel
 
                 if (responce.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    var token = await responce.Content.ReadAsStringAsync();
+                    var data = await responce.Content.ReadFromJsonAsync<List<string>>();
+                    var token = data[1];
+                    var type = data[0];
                     HttpClients.SetToken(token);
-                    responce = await HttpClients.HttpClient.GetAsync($"Students");
+
+                    //
                     //var d = await responce.Content.ReadFromJsonAsync<StModel>();
-                    MessageBox.Show("Оk");
+                    if (type == "1")
+                    {
+                        var studResponce = await HttpClients.HttpClient.GetAsync($"Student");
+                        var student = await studResponce.Content.ReadFromJsonAsync<Student>();
+                        MainWindow mainWindow = new MainWindow(student);
+                        mainWindow.Show();
+                    }
+                    else if (type == "2")
+                    {
+                        TeacherWin teacherWin = new TeacherWin();
+                        teacherWin.Show();
+                    }
                     return;
                     //if (d.RoleId == 1) //сначала лезем к студентам ищем потом к учителям потом к админу
                     //{
@@ -71,9 +86,9 @@ namespace TestAO1145WPF.ViewModel
                     return;
                 }
             });
-                     
+
         }
-     
+
         EnterWin enterWindow;
         internal void SetWindow(EnterWin enterWindow)
         {
@@ -86,4 +101,4 @@ namespace TestAO1145WPF.ViewModel
     }
 }
 
-    
+

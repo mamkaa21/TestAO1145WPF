@@ -20,17 +20,12 @@ namespace TestAO1145WPF.ViewModel
             {
                 teacher = value;
                 Signal(nameof(Teacher));
+                Signal(nameof(IsTeacher));
             }
         }
-        private List<Teacher> teacherList { get; set; }
-        public List<Teacher> TeacherList
+        public Visibility IsTeacher
         {
-            get => teacherList;
-            set
-            {
-                teacherList = value;
-                Signal(nameof(TeacherList));
-            }
+            get => Teacher == null ? Visibility.Collapsed : Visibility.Visible;
         }
         private Student student { get; set; }
         public Student Student

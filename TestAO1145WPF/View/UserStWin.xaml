@@ -35,6 +35,8 @@ Title="Окно профиля" Height="450" Width="800">
                         Background="PeachPuff"  FontFamily="Impact" FontSize="15" Foreground="#FF7F3838" BorderThickness ="0"/>
                 <Button Content=" Все тесты " Command="{Binding OpenAllTestWin}"  
                         Background="PeachPuff"  FontFamily="Impact" FontSize="15" Foreground="#FF7F3838" BorderThickness ="0"/>
+                <Button Content=" Окно профиля"  HorizontalAlignment="Left" Command="{Binding OpenUserStWin}" 
+               Background="PeachPuff" BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838"/>
             </StackPanel>
             
             <Label Content="Студент " FontFamily="Impact" FontSize="20" Foreground="#FF7F3838"  Grid.Row="2"  />
@@ -45,7 +47,7 @@ Title="Окно профиля" Height="450" Width="800">
                      BorderThickness="0 0 0 2" BorderBrush="#FF7F3838"   IsEnabled="{Binding ListBoxEnabled}" Grid.Row="2" Grid.Column="2" 
               Height="30" VerticalAlignment="Top"/>
             <Label Content="Группа "  FontFamily="Impact" FontSize="20" Foreground="#FF7F3838"  Grid.Row="3"  />
-            <TextBox Text="{Binding Student.IdClass}" BorderThickness="0 0 0 2" BorderBrush="#FF7F3838"
+            <TextBox Text="{Binding Student.Class}" BorderThickness="0 0 0 2" BorderBrush="#FF7F3838"
                      Background="PapayaWhip"  IsEnabled="{Binding ListBoxEnabled}" Grid.Row="3" Grid.Column="1" 
               Height="30" VerticalAlignment="Top"/>
             <!-- как-то вытянуть класс ученика -->         

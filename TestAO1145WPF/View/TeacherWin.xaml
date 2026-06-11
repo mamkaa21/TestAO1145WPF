@@ -44,11 +44,9 @@
             </ListBox.ItemsPanel>
             <ListBox.ItemTemplate >
                 <DataTemplate >
-                    <StackPanel >
-                        <TextBlock  Text="{Binding Name}"/>
-                       
-                        <!--тут дальше все айди я хз как вытануть-->
-
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock  Text="{Binding Name, StringFormat={}Название теста: {0}}" Foreground="#FF7F3838"/>
+                        <TextBlock Margin="20 0 0 0"  Text="{Binding Teacher, StringFormat={}Преподаватель: {0}}" Foreground="#FF7F3838"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

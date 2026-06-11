@@ -36,6 +36,16 @@ namespace TestAO1145WPF.ViewModel
                 Signal(nameof(TestList));
             }
         }
+        private Student student { get; set; }
+        public Student Student
+        {
+            get => student;
+            set
+            {
+                student = value;
+                Signal(nameof(student));
+            }
+        }
 
         private DispatcherTimer timer = null;
         public Command OpenResultForOneStWin { get; }
@@ -59,24 +69,23 @@ namespace TestAO1145WPF.ViewModel
             });
             OpenUserStWin = new Command(async () =>
             {
-                UserStWin userStWin = new UserStWin();
+                UserStWin userStWin = new UserStWin(Student);
                 userStWin.Show();
                 Signal();
             });
-            //DoubleClickCommand = new RelayCommand(DoubleClickExecute);
-            //сюда метод с апи геталлтест
+            DoubleClickCommand = new RelayCommand(DoubleClickExecute);          
         }
 
-        //private void DoubleClickExecute(object parameter)
-        //{
+        private void DoubleClickExecute(object parameter)
+        {
 
-        //    if (parameter is Test Test)
-        //    {
-        //        TestWin goodWin = new TestWin(Test);
-        //        goodWin.Show();
-        //        Signal();
-        //    }
-        //}
+            if (parameter is Test Test)
+            {
+                TestWin goodWin = new TestWin(Test);
+                goodWin.Show();
+                Signal();
+            }
+        }
         public async void GetAllTest()
         {
             string arg = JsonSerializer.Serialize(Test);
@@ -116,6 +125,11 @@ namespace TestAO1145WPF.ViewModel
         internal void CloseWindow(MainWindow mainWindow)
         {
             this.mainWindow.Close();
+        }
+
+        internal void SetStudent(Student? student)
+        {
+            Student = student;
         }
     }
 

@@ -178,7 +178,7 @@ xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
           Background="PeachPuff" BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838"/>
         <TabControl Grid.Row="1" Grid.ColumnSpan="7" Grid.RowSpan="7"  Background="PapayaWhip" BorderBrush="{x:Null}">
             <TabItem Header="Преподаватели"  Background="PeachPuff" Margin="0 0 0 -2"
-                      FontFamily="Impact" FontSize="15" Foreground="#FF7F3838">
+                      FontFamily="Impact" FontSize="15" Foreground="#FF7F3838" Visibility="{Binding IsTeacher}">
                 <StackPanel >
                     
                     <Label Content="Фамилия"  Foreground="#FF7F3838"/>

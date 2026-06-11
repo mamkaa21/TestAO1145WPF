@@ -2,10 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls.Primitives;
+using System.Windows.Threading;
 using TestAO1145WPF.Model;
 using TestAO1145WPF.View;
 
@@ -73,7 +76,7 @@ namespace TestAO1145WPF.ViewModel
                 Signal(nameof(SubjectList));
             }
         }
-
+        private DispatcherTimer timer = null;
         AdminWin adminWin;
         public Command OpenAddTeacher { get; }
         //public Command OpenEditTeacher { get; }
@@ -84,6 +87,7 @@ namespace TestAO1145WPF.ViewModel
 
         JsonSerializerOptions options = new JsonSerializerOptions();
         public AdminWinVM() {
+            timerStart();
             //тут добавить метод получения учителей студентов и предметов с апи 
             OpenAddTeacher = new Command(async () =>
             {
@@ -100,7 +104,57 @@ namespace TestAO1145WPF.ViewModel
 
             });
         }
-         
+        public async void GetAllTeacher()
+        {
+            string arg = JsonSerializer.Serialize(Teacher);
+            var responce = await HttpClients.HttpClient.GetAsync($"Admin/GetAllTeacher");
+
+            if (responce.StatusCode == System.Net.HttpStatusCode.BadRequest)
+            {
+                var result = await responce.Content.ReadAsStringAsync();
+                MessageBox.Show(result);
+                return;
+            }
+            if (responce.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                TeacherList = await responce.Content.ReadFromJsonAsync<List<Teacher>>();
+                return;
+            }
+        }
+
+        public async void GetAllStudent()
+        {
+            string arg = JsonSerializer.Serialize(Student);
+            var responce = await HttpClients.HttpClient.GetAsync($"Student/GetAllTest");
+
+            if (responce.StatusCode == System.Net.HttpStatusCode.BadRequest)
+            {
+                var result = await responce.Content.ReadAsStringAsync();
+                MessageBox.Show(result);
+                return;
+            }
+            if (responce.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                StudentList = await responce.Content.ReadFromJsonAsync<List<Student>>();
+                return;
+            }
+        }
+        public void timerStart()
+        {
+            timer = new DispatcherTimer();
+            timer.Tick += new EventHandler(timerTick);
+            timer.Interval = new TimeSpan(0, 0, 10);
+            timer.Start();
+        }
+        private void timerTick(object sender, EventArgs e) //к таймеру относится 
+        {
+            Thread thread1 = new Thread(GetAllStudent);
+            thread1.Start();
+            Thread thread2 = new Thread(GetAllTeacher);
+            thread2.Start();
+            //timer.Stop();
+        }
+
         internal void SetWindow(AdminWin adminWin)
         {
             this.adminWin = adminWin;

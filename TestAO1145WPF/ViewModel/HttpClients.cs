@@ -18,7 +18,7 @@ namespace TestAO1145WPF.ViewModel
                 if (_httpClient == null)
                     _httpClient = new HttpClient
                     {
-                        //BaseAddress = new Uri("https://localhost:7258/api/")
+                        BaseAddress = new Uri("https://localhost:7299/api/")
                     };
                 return _httpClient;
             }

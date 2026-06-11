@@ -19,7 +19,6 @@ public partial class Student
 
     public int? IdClass { get; set; }
 
-    public virtual Class? IdClassNavigation { get; set; }
+    public int? Class { get; set; } 
 
-    public virtual ICollection<Studentanswer> Studentanswers { get; set; } = new List<Studentanswer>();
 }

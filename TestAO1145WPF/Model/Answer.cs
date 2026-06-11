@@ -16,5 +16,7 @@ public partial class Answer
 
     public virtual Question? IdQuestionNavigation { get; set; }
 
+    public bool IsChecked { get; set; }
+
     public virtual ICollection<Testcrossquestion> Testcrossquestions { get; set; } = new List<Testcrossquestion>();
 }

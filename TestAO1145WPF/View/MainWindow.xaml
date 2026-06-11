@@ -12,7 +12,7 @@
     <Window.Resources >
         <vm:MainWinVM x:Key ="vm"/>
     </Window.Resources >
-    <Grid Background="BlanchedAlmond">
+    <Grid Background="PapayaWhip">
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
             <RowDefinition/>
@@ -27,30 +27,26 @@
         </StackPanel>
         <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.Row="2" Background="PapayaWhip"
                     ItemsSource="{Binding TestList}" SelectedItem="{Binding Test}" x:Name="UserMenuLB" Height="405">
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="MouseDoubleClick">
-                                <i:InvokeCommandAction Command="{Binding DoubleClickCommand}"
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <i:InvokeCommandAction Command="{Binding DoubleClickCommand}"
                                           CommandParameter="{Binding ElementName=UserMenuLB, Path=SelectedItem}"/>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                        <ListBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel />
-                                <!--тут ничего не трогать!!!-->
-                            </ItemsPanelTemplate>
-                        </ListBox.ItemsPanel>
-                        <ListBox.ItemTemplate >
-                            <DataTemplate >
-                                <StackPanel >
-                        <TextBlock  Text="{Binding Name}" Foreground="#FF7F3838"/>
-                        <TextBlock  Text="{Binding IdTeacherNavigation.LastName}" Foreground="#FF7F3838"/>
-                                    
-                        <!--тут дальше все айди я хз как вытануть-->
-
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-               
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                    <!--тут ничего не трогать!!!-->
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate >
+                <DataTemplate >
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock  Text="{Binding Name, StringFormat={}Название теста: {0}}" Foreground="#FF7F3838"/>
+                        <TextBlock Margin="20 0 0 0"  Text="{Binding Teacher, StringFormat={}Преподаватель: {0}}" Foreground="#FF7F3838"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Window>
