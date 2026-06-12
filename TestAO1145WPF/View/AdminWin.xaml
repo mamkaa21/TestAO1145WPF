@@ -31,7 +31,7 @@ xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
                             <!-- КОГДА ВКЛАДКА ВЫБРАНА -->
                             <Trigger Property="IsSelected" Value="True">
                                 <!-- Здесь меняем цвет фона на тот же, что и у панели (или другой) -->
-                                <Setter TargetName="Border" Property="Background" Value="#FFDAB9"/>
+                                <Setter TargetName="Border" Property="Background" Value="PapayaWhip"/>
                             </Trigger>
                             <!-- КОГДА МЫШКА НАВЕДЕНА (Hover) -->
                             <Trigger Property="IsMouseOver" Value="True">
@@ -62,11 +62,12 @@ xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
                 <MenuItem Header="Изменить" Command="{Binding OpenDeleteSt}"/>-->
             </MenuItem>
         </Menu>
-        <TabControl Grid.Row="1" Background="PeachPuff" Grid.ColumnSpan="4">
-            <TabItem  Header="Преподаватели"  Background="PeachPuff" BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838" OpacityMask="Black">
+        <TabControl Grid.Row="1" Background="PapayaWhip" BorderBrush="{x:Null}"  >
+            <TabItem  Header="Преподаватели" FontFamily="Impact" FontSize="15" Margin="0 0 0 -2"
+                      Foreground="#FF7F3838" OpacityMask="Black" BorderBrush="{x:Null}">
                 <StackPanel >
-                    <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible" Background="PapayaWhip"
-                    ItemsSource="{Binding TeacherList}" SelectedItem="{Binding Teacher}" x:Name="UserMenuLB" Height="405">
+                    <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible" Background="PapayaWhip" Foreground="#FF7F3838"
+                    ItemsSource="{Binding TeacherList}" SelectedItem="{Binding Teacher}" x:Name="UserMenuLB" Height="405" BorderBrush="{x:Null}">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="MouseDoubleClick">
                                 <i:InvokeCommandAction Command="{Binding DoubleClickCommand}"
@@ -81,22 +82,19 @@ xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
                         </ListBox.ItemsPanel>
                         <ListBox.ItemTemplate >
                             <DataTemplate >
-                                <StackPanel >
+                                <StackPanel Orientation="Horizontal">
                                     <TextBlock  Text="{Binding FirstName}"/>
                                     <TextBlock  Text="{Binding LastName}"/>
-
-
-                                    <!--тут дальше все айди я хз как вытануть-->
-
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
                 </StackPanel>
             </TabItem>
-            <TabItem  Header="Студенты"  Background="PeachPuff" BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838">
+            <TabItem  Header="Студенты" Margin="0 0 0 -2"
+                      Background="PeachPuff" BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838">
                 <StackPanel>
-                    <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible"
+                    <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible" Background="PapayaWhip" Foreground="#FF7F3838"
      ItemsSource="{Binding StudentList}" SelectedItem="{Binding Student}" x:Name="UserMenuL" Height="405">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="MouseDoubleClick">
@@ -112,22 +110,19 @@ xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
                         </ListBox.ItemsPanel>
                         <ListBox.ItemTemplate >
                             <DataTemplate >
-                                <StackPanel >
+                                <StackPanel  Orientation="Horizontal">
                                     <TextBlock  Text="{Binding FirstName}"/>
                                     <TextBlock  Text="{Binding LastName}"/>
-
-
-                                    <!--тут дальше все айди я хз как вытануть-->
-
+                                    
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
                 </StackPanel>
             </TabItem>
-            <TabItem Header="Предметы"  Background="PeachPuff" BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838">
+            <TabItem Header="Предметы" Margin="0 0 0 -2" Background="PeachPuff" BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838">
                 <StackPanel>
-                    <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible"
+                    <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible" Background="PapayaWhip" Foreground="#FF7F3838"
 ItemsSource="{Binding SubjectList}" SelectedItem="{Binding Subject}" x:Name="UserMenu" Height="405">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="MouseDoubleClick">
@@ -144,8 +139,7 @@ ItemsSource="{Binding SubjectList}" SelectedItem="{Binding Subject}" x:Name="Use
                         <ListBox.ItemTemplate >
                             <DataTemplate >
                                 <StackPanel >
-                                    <TextBlock  Text="{Binding FirstName}"/>
-                                    <TextBlock  Text="{Binding LastName}"/>
+                                    <TextBlock  Text="{Binding Name}"/>
 
 
                                     <!--тут дальше все айди я хз как вытануть-->
