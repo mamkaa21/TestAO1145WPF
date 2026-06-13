@@ -12,7 +12,7 @@ namespace TestAO1145WPF.ViewModel
 {
     public class AddTeacherWinVM: BaseVM
     {
-        private Teacher teacher { get; set; }
+        private Teacher teacher { get; set; } = new Teacher();
         public Teacher Teacher
         {
             get => teacher;
@@ -27,7 +27,7 @@ namespace TestAO1145WPF.ViewModel
         {
             get => Teacher == null ? Visibility.Collapsed : Visibility.Visible;
         }
-        private Student student { get; set; }
+        private Student student { get; set; } = new Student();
         public Student Student
         {
             get => student;
@@ -37,17 +37,11 @@ namespace TestAO1145WPF.ViewModel
                 Signal(nameof(Student));
             }
         }
-        private List<Student> studentList { get; set; }
-        public List<Student> StudentList
+        public Visibility IsStudent
         {
-            get => studentList;
-            set
-            {
-                studentList = value;
-                Signal(nameof(StudentList));
-            }
+            get => Student == null ? Visibility.Collapsed : Visibility.Visible;
         }
-        private Subject subject { get; set; }
+        private Subject subject { get; set; } = new Subject();
         public Subject Subject
         {
             get => subject;
@@ -57,18 +51,12 @@ namespace TestAO1145WPF.ViewModel
                 Signal(nameof(Subject));
             }
         }
-        private List<Subject> subjectList { get; set; }
-        public List<Subject> SubjectList
+        public Visibility IsSubject
         {
-            get => subjectList;
-            set
-            {
-                subjectList = value;
-                Signal(nameof(SubjectList));
-            }
+            get => Subject == null ? Visibility.Collapsed : Visibility.Visible;
         }
 
-        private Class clas { get; set; }
+        private Class clas { get; set; } = new Class();
         public Class Clas
         {
             get => clas;
@@ -78,15 +66,9 @@ namespace TestAO1145WPF.ViewModel
                 Signal(nameof(Clas));
             }
         }
-        private List<Class> clasList { get; set; }
-        public List<Class> ClasList
+        public Visibility IsClass
         {
-            get => clasList;
-            set
-            {
-                clasList = value;
-                Signal(nameof(ClasList));
-            }
+            get => Clas == null ? Visibility.Collapsed : Visibility.Visible;
         }
 
         public Command SaveTea { get; }
@@ -95,7 +77,7 @@ namespace TestAO1145WPF.ViewModel
         public Command SaveCl { get; }
         public AddTeacherWinVM()
         {
-            SaveTea = new Command(async() =>
+            SaveTea = new Command(async() =>// NO работает
             {
             string arg = JsonSerializer.Serialize(Teacher);
             var responce = await HttpClients.HttpClient.PostAsync($"Admin/AddNewTeacher", new StringContent(arg, Encoding.UTF8, "application/json"));
@@ -119,7 +101,7 @@ namespace TestAO1145WPF.ViewModel
                 return;
             });
 
-            SaveSt = new Command(async () =>
+            SaveSt = new Command(async () =>//работает
             {
                 string arg = JsonSerializer.Serialize(Student);
                 var responce = await HttpClients.HttpClient.PostAsync($"Admin/AddNewStudent", new StringContent(arg, Encoding.UTF8, "application/json"));
@@ -143,7 +125,7 @@ namespace TestAO1145WPF.ViewModel
                 return;
             });
 
-            SaveSubj = new Command(async () =>
+            SaveSubj = new Command(async () => //работает
             {
                 string arg = JsonSerializer.Serialize(Subject);
                 var responce = await HttpClients.HttpClient.PostAsync($"Admin/AddSubject", new StringContent(arg, Encoding.UTF8, "application/json"));
@@ -167,7 +149,7 @@ namespace TestAO1145WPF.ViewModel
                 return;
             });
 
-            SaveCl = new Command(async () =>
+            SaveCl = new Command(async () =>//работает
             {
                 string arg = JsonSerializer.Serialize(Clas);
                 var responce = await HttpClients.HttpClient.PostAsync($"Admin/AddClass", new StringContent(arg, Encoding.UTF8, "application/json"));
@@ -190,10 +172,6 @@ namespace TestAO1145WPF.ViewModel
                     MessageBox.Show("Error2");
                 return;
             });
-
-
         }
-
-        
     }
 }

@@ -54,7 +54,7 @@ namespace TestAO1145WPF.ViewModel
         public ICommand DoubleClickCommand { get; private set; }
         public MainWinVM()
         {
-            GetAllTest();
+            timerStart();
             OpenResultForOneStWin = new Command(async () =>
             {
                 ResultForOneStWin resultWin = new ResultForOneStWin();
@@ -75,10 +75,8 @@ namespace TestAO1145WPF.ViewModel
             });
             DoubleClickCommand = new RelayCommand(DoubleClickExecute);          
         }
-
         private void DoubleClickExecute(object parameter)
         {
-
             if (parameter is Test Test)
             {
                 TestWin goodWin = new TestWin(Test);
@@ -115,8 +113,6 @@ namespace TestAO1145WPF.ViewModel
             Thread thread1 = new Thread(GetAllTest);
             thread1.Start();           
         }
-
-
         MainWindow mainWindow;
         internal void SetWindow(MainWindow mainWindow)
         {
@@ -126,11 +122,9 @@ namespace TestAO1145WPF.ViewModel
         {
             this.mainWindow.Close();
         }
-
         internal void SetStudent(Student? student)
         {
             Student = student;
         }
     }
-
 }

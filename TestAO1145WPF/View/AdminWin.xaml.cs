@@ -25,5 +25,10 @@ namespace TestAO1145WPF.View
             InitializeComponent();
             (DataContext as AdminWinVM).SetWindow(this);
         }
+
+        private void UserMenuLB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

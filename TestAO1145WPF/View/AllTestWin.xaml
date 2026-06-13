@@ -4,9 +4,48 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestAO1145WPF.View"
-        mc:Ignorable="d"
-        Title="AllTestWin" Height="450" Width="800">
-    <Grid>
-        
+        xmlns:m="clr-namespace:TestAO1145WPF.Model"
+        xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
+      mc:Ignorable="d"
+        DataContext="{DynamicResource vm}"
+  Title="Окно всех тестов" Height="450" Width="800">
+    <Window.Resources >
+        <vm:AllTestWinVM x:Key ="vm"/>
+    </Window.Resources >
+    <Grid Background="PapayaWhip">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Background="PeachPuff">
+            <Button Content="Назад" Command="{Binding Back}" 
+                Background="PeachPuff" BorderThickness="0"  FontFamily="Impact" FontSize="15" Foreground="#FF7F3838"/>
+            <!--<Button Content=" Окно профиля" Command="{Binding OpenUserTWin}"  
+                Background="PeachPuff" BorderThickness="0"  FontFamily="Impact" FontSize="15" Foreground="#FF7F3838"/>-->
+        </StackPanel>
+        <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible" Background="BlanchedAlmond"
+ ItemsSource="{Binding TestList}" SelectedItem="{Binding Test}" x:Name="UserMenuL" Height="405" Grid.Row="2">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <i:InvokeCommandAction Command="{Binding DoubleClickCommand}"
+                       CommandParameter="{Binding ElementName=UserMenuLB, Path=SelectedItem}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                    <!--тут ничего не трогать!!!-->
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate >
+                <DataTemplate >
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock  Text="{Binding Name, StringFormat={}Название теста: {0}}" Foreground="#FF7F3838"/>
+                        <TextBlock Margin="20 0 0 0"  Text="{Binding Teacher, StringFormat={}Преподаватель: {0}}" Foreground="#FF7F3838"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Window>

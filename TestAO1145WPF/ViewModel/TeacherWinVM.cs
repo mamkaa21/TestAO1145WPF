@@ -44,7 +44,7 @@ namespace TestAO1145WPF.ViewModel
 
         public TeacherWinVM()
         {
-            GetAllTest();
+            timerStart();
             OpenResultWin = new Command(async () =>
             {
                 ResultWin resultWin = new ResultWin();
@@ -117,7 +117,7 @@ namespace TestAO1145WPF.ViewModel
         {
             this.teacherWin = teacherWin;
         }
-        internal void CloseWindow(TeacherWin teacherWin)
+        internal void CloseWindow()
         {
             this.teacherWin.Close();
         }

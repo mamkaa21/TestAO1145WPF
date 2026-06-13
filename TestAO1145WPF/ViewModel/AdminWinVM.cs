@@ -76,6 +76,26 @@ namespace TestAO1145WPF.ViewModel
                 Signal(nameof(SubjectList));
             }
         }
+        private Class clas { get; set; }
+        public Class Class
+        {
+            get => clas;
+            set
+            {
+                clas = value;
+                Signal(nameof(Class));
+            }
+        }
+        private List<Class> classList { get; set; }
+        public List<Class> ClassList
+        {
+            get => classList;
+            set
+            {
+                classList = value;
+                Signal(nameof(ClassList));
+            }
+        }
         private DispatcherTimer timer = null;
         AdminWin adminWin;
         public Command OpenAddTeacher { get; }
@@ -87,11 +107,7 @@ namespace TestAO1145WPF.ViewModel
 
         JsonSerializerOptions options = new JsonSerializerOptions();
         public AdminWinVM() {
-            //timerStart();
-            GetAllTeacher();
-            GetAllStudent();
-            GetAllSubject();
-            //тут добавить метод получения учителей студентов и предметов с апи 
+            timerStart();
             OpenAddTeacher = new Command(async () =>
             {
                 AddTeacherWin    addTeacherWin = new AddTeacherWin();
@@ -158,23 +174,22 @@ namespace TestAO1145WPF.ViewModel
                 return;
             }
         }
-        //public void timerStart()
-        //{
-        //    timer = new DispatcherTimer();
-        //    timer.Tick += new EventHandler(timerTick);
-        //    timer.Interval = new TimeSpan(0, 0, 10);
-        //    timer.Start();
-        //}
-        //private void timerTick(object sender, EventArgs e) //к таймеру относится 
-        //{
-        //    Thread thread1 = new Thread(GetAllStudent);
-        //    thread1.Start();
-        //    Thread thread3 = new Thread(GetAllSubject);
-        //    thread1.Start();
-        //    Thread thread2 = new Thread(GetAllTeacher);
-        //    thread2.Start();
-        //    //timer.Stop();
-        //}
+        public void timerStart()
+        {
+            timer = new DispatcherTimer();
+            timer.Tick += new EventHandler(timerTick);
+            timer.Interval = new TimeSpan(0, 0, 10);
+            timer.Start();
+        }
+        private void timerTick(object sender, EventArgs e) //к таймеру относится 
+        {
+            Thread thread1 = new Thread(GetAllStudent);
+            thread1.Start();
+            Thread thread3 = new Thread(GetAllSubject);
+            thread3.Start();
+            Thread thread2 = new Thread(GetAllTeacher);
+            thread2.Start();
+        }
 
         internal void SetWindow(AdminWin adminWin)
         {

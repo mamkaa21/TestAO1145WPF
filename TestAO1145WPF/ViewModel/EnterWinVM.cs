@@ -63,7 +63,12 @@ namespace TestAO1145WPF.ViewModel
                         TeacherWin teacherWin = new TeacherWin();
                         teacherWin.Show();
                     }
-                    return;
+                    else
+                    {
+                        AdminWin adminWin = new AdminWin();
+                        adminWin.Show();
+                       
+                    } return;
                     //if (d.RoleId == 1) //сначала лезем к студентам ищем потом к учителям потом к админу
                     //{
                     //    //AdminWin adminWin = new AdminWin();
