@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Threading;
 using TestAO1145WPF.Model;
 using TestAO1145WPF.View;
@@ -36,6 +37,7 @@ namespace TestAO1145WPF.ViewModel
         }
         private DispatcherTimer timer = null;
         public Command Back { get; }
+        public ICommand DoubleClickCommand { get; private set; }
         public AllTestWinVM()
         {
             timerStart();
@@ -45,6 +47,17 @@ namespace TestAO1145WPF.ViewModel
                 teacherWin.Show();
                 //CloseWindow();
             });
+            DoubleClickCommand = new RelayCommand(DoubleClickExecute);
+        }
+        private void DoubleClickExecute(object parameter)
+        {
+
+            if (parameter is Test Test)
+            {
+                //TestWin goodWin = new TestWin(Test);
+                //goodWin.Show();
+                //Signal();
+            }
         }
         public async void GetAllTest()
         {
