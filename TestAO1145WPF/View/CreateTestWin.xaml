@@ -183,6 +183,9 @@
             <Label Content="Предмет" Foreground="#FF7F3838" FontFamily="Impact" FontSize="15"/>
             <ComboBox ItemsSource="{Binding SubjectList}" SelectedItem="{Binding Subject}" DisplayMemberPath="{Binding Subject.Name}" 
                               Foreground="#FF7F3838"/>
+            <Label Content="Количество вопросов"  Foreground="#FF7F3838" FontFamily="Impact" FontSize="15"/>
+            <TextBox Text="{Binding Test.CountQuestionTest}" FontFamily="Impact" FontSize="15"
+                 Foreground="#FF7F3838" BorderThickness="0 0 0 1" BorderBrush="#FF7F3838"  Background="PapayaWhip"/>
             <!--SelectedValuePath="{Binding Good.Category}"-->           
                 </StackPanel> 
                 <Button  Grid.Row="3" Content="Далее" Command="{Binding OpenCreateQForT}" FontFamily="Impact" FontSize="15"

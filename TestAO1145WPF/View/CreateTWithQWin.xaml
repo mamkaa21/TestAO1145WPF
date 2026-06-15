@@ -3,10 +3,194 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TestAO1145WPF.View"
+               xmlns:local="clr-namespace:TestAO1145WPF.View"
+        xmlns:m="clr-namespace:TestAO1145WPF.Model"
+        xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"     
         mc:Ignorable="d"
-        Title="CreateTWithQWin" Height="450" Width="800">
-    <Grid>
-        
+        DataContext="{DynamicResource vm}"
+    Title="Окно создания тестов" Height="450" Width="800">
+    <Window.Resources >
+        <vm:CreateTestWinVM x:Key ="vm"/>
+        <Style TargetType="{x:Type TabItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <!-- Border — это сама "шапка" вкладки -->
+                        <Border Name="Border"  
+                     SnapsToDevicePixels="True">
+                            <!-- Текст внутри вкладки -->
+                            <ContentPresenter x:Name="ContentSite"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   ContentSource="Header"
+                                   Margin="12,2,12,2"
+                                   RecognizesAccessKey="True"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <!-- КОГДА ВКЛАДКА ВЫБРАНА -->
+                            <Trigger Property="IsSelected" Value="True">
+                                <!-- Здесь меняем цвет фона на тот же, что и у панели (или другой) -->
+                                <Setter TargetName="Border" Property="Background" Value="PapayaWhip"/>
+                            </Trigger>
+                            <!-- КОГДА МЫШКА НАВЕДЕНА (Hover) -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="PeachPuff"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--стиль табайтема-->
+        <Style TargetType="ComboBoxItem">
+            <Setter Property="Background" Value="PapayaWhip"/>
+            <Setter Property="Foreground" Value="#FF7F3838"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Style.Triggers>
+                <!-- Когда мышка наведена на элемент -->
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="PapayaWhip"/>
+                    <Setter Property="Foreground" Value="#FF7F3838"/>
+                </Trigger>
+                <!-- Когда элемент выбран -->
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#FF9966"/>
+                    <!-- Оранжевый -->
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <!--комбобокс внутри-->
+        <Style TargetType="ComboBox">
+            <Setter Property="Background" Value="PeachPuff"/>
+            <!--Цвет фона закрытого комбобокса-->
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <!--Цвет рамки-->
+
+            <Setter Property="Foreground" Value="#FF231717"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <!--ToggleButton отвечает за открытие списка (включая стрелочку)-->
+                            <ToggleButton Name="ToggleButton" 
+                                  BorderBrush="{TemplateBinding BorderBrush}" 
+                                  BorderThickness="{TemplateBinding BorderThickness}" 
+                                  Background="{TemplateBinding Background}" 
+                                  Grid.Column="2" 
+                                  Focusable="false"
+                                  IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" 
+                                  ClickMode="Press">
+                                <ToggleButton.Template>
+                                    <ControlTemplate TargetType="ToggleButton">
+                                        <Border Name="TemplateBorder" 
+                                        Background="{TemplateBinding Background}" 
+                                        BorderBrush="{TemplateBinding BorderBrush}" 
+                                        BorderThickness="{TemplateBinding BorderThickness}" 
+                                        CornerRadius="3">
+                                            <!--Рисуем стрелочку "вниз" справа-->
+                                            <Grid HorizontalAlignment="Right" Width="20">
+                                                <Path Name="Arrow" 
+                                              Fill="#FFA25448" 
+                                              HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center" 
+                                              Data="M 0 0 L 4 4 L 8 0 Z"/>
+                                            </Grid>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter TargetName="TemplateBorder" Property="Background" Value="#FFDAB9" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </ToggleButton.Template>
+                            </ToggleButton>
+
+                            <!--Область, где отображается выбранный текст-->
+                            <ContentPresenter Name="ContentSite" 
+                                      IsHitTestVisible="False" 
+                                      Content="{TemplateBinding SelectionBoxItem}" 
+                                      ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" 
+                                      ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" 
+                                      Margin="10,3,23,3" 
+                                      VerticalAlignment="Center" 
+                                      HorizontalAlignment="Left" />
+
+                            <!--Выпадающий список (Popup)-->
+                            <Popup Name="Popup" 
+                           Placement="Bottom" 
+                           IsOpen="{TemplateBinding IsDropDownOpen}" 
+                           AllowsTransparency="True" 
+                           Focusable="False" 
+                           PopupAnimation="Slide">
+                                <Grid Name="DropDown" 
+                              SnapsToDevicePixels="True" 
+                              MinWidth="{TemplateBinding ActualWidth}" 
+                              MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                    <Border Name="DropDownBorder" 
+                                    Background="White" 
+                                    BorderBrush="#FFB366" 
+                                    BorderThickness="1" 
+                                    CornerRadius="0,0,3,3"/>
+                                    <ScrollViewer Margin="4" SnapsToDevicePixels="True">
+                                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
+                                    </ScrollViewer>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <!--Триггер доступности (Enabled = False)-->
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" Value="#E0E0E0"/>
+                                <Setter Property="Foreground" Value="#888888"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources >
+    <Grid  Background="PeachPuff">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Button Content="   Назад   " HorizontalAlignment="Left" Command="{Binding Back}"  
+          Background="PeachPuff" BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838"/>
+        <!--<TabControl Grid.Row="1" Grid.ColumnSpan="7" Grid.RowSpan="7"  Background="PapayaWhip" BorderBrush="{x:Null}">
+            <TabItem Header=""  Background="PeachPuff" Margin="0 0 0 -2"
+                      FontFamily="Impact" FontSize="15" Foreground="#FF7F3838">-->
+        <StackPanel Grid.Row="1" Grid.RowSpan="2" Background="PapayaWhip"> 
+            <Label Content="Количество воппросов:"  Foreground="#FF7F3838" FontFamily="Impact" FontSize="15"/> 
+            <TextBox Text="{Binding Question.Name}" FontFamily="Impact" FontSize="15"
+                             Foreground="#FF7F3838" BorderThickness="0 0 0 1" BorderBrush="#FF7F3838"  Background="PapayaWhip"/>
+            <ComboBox ItemsSource="{Binding Question}" SelectedItem="{Binding Subject}" DisplayMemberPath="{Binding Subject.Name}" 
+                  Foreground="#FF7F3838"/>
+           
+          
+            <Label Content="Преподаватель" Foreground="#FF7F3838" FontFamily="Impact" FontSize="15"/>
+            <StackPanel Orientation="Horizontal" >
+                <Label Content="{Binding Teacher.LastName}" FontFamily="Impact" FontSize="15" Width="180"
+                  Foreground="#FF7F3838" BorderThickness="0 0 0 1" BorderBrush="#FF7F3838"  Background="PapayaWhip"/>
+                <Label Content="{Binding Teacher.LastName}" FontFamily="Impact" FontSize="15" Width="180"
+                  Foreground="#FF7F3838" BorderThickness="0 0 0 1" BorderBrush="#FF7F3838"  Background="PapayaWhip"/>
+                <Label Content="" Foreground="#FF7F3838" Width="440" BorderThickness="0 0 0 1" BorderBrush="#FF7F3838"/>
+            </StackPanel>
+            <Label Content="Предмет" Foreground="#FF7F3838" FontFamily="Impact" FontSize="15"/>
+            
+            <!--SelectedValuePath="{Binding Good.Category}"-->
+        </StackPanel>
+        <Button  Grid.Row="3" Content="Далее" Command="{Binding OpenCreateQForT}" FontFamily="Impact" FontSize="15"
+                            Foreground="#FF7F3838"  BorderBrush="{x:Null}"  Background="PapayaWhip"/>
+        <!--</TabItem>
+        </TabControl>-->
     </Grid>
 </Window>
