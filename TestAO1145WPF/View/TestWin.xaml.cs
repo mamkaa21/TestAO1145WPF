@@ -27,5 +27,13 @@ namespace TestAO1145WPF.View
             (DataContext as TestWinVM).SetWindow(this);
             (DataContext as TestWinVM).SetTest(test);
         }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            foreach (Answer a in e.AddedItems)
+                a.IsChecked = true;
+            foreach (Answer a in e.RemovedItems)
+                a.IsChecked = false;
+        }
     }
 }

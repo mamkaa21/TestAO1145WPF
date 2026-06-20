@@ -73,10 +73,10 @@ namespace TestAO1145WPF.ViewModel
 
             
         }
-        public async void GetAllTest()
+        public async void GetTest()
         {
             string arg = JsonSerializer.Serialize(Test);
-            var responce = await HttpClients.HttpClient.GetAsync($"Student/GetAllTest");
+            var responce = await HttpClients.HttpClient.GetAsync($"Teacher/GetTest");
 
             if (responce.StatusCode == System.Net.HttpStatusCode.BadRequest)
             {
@@ -94,22 +94,23 @@ namespace TestAO1145WPF.ViewModel
         {
             timer = new DispatcherTimer();
             timer.Tick += new EventHandler(timerTick);
-            timer.Interval = new TimeSpan(0, 0, 10);
+            timer.Interval = new TimeSpan(0, 0, 0, 0, 100);
             timer.Start();
         }
         private void timerTick(object sender, EventArgs e) //к таймеру относится 
         {
-            Thread thread1 = new Thread(GetAllTest);
+            Thread thread1 = new Thread(GetTest);
             thread1.Start();
+            timer.Interval = new TimeSpan(0, 0, 10);
         }
         private void DoubleClickExecute(object parameter)
         {
 
             if (parameter is Test Test)
             {
-                //TestWin goodWin = new TestWin(Test);
-                //goodWin.Show();
-                //Signal();
+                CreateTWithQWin goodWin = new CreateTWithQWin(Test);
+                goodWin.Show();
+                Signal();
             }
         }
         TeacherWin teacherWin;

@@ -12,15 +12,8 @@ public partial class Test
 
     public int? IdTeacher { get; set; }
 
-    public string Teacher { get; set; }
+    public string? Teacher { get; set; }
 
     public int? CountQuestionTest { get; set; }
-
-    public virtual Subject? IdSubjectNavigation { get; set; }
-
-    public virtual Teacher? IdTeacherNavigation { get; set; }
-
-    public virtual ICollection<Question> Questions { get; set; } = new List<Question>();
-
-    public virtual ICollection<Studentanswer> Studentanswers { get; set; } = new List<Studentanswer>();
+    public string? Subject { get; set; }
 }

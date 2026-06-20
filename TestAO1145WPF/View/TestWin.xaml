@@ -4,14 +4,138 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestAO1145WPF.View"
-        xmlns:m="clr-namespace:TestAO1145WPF.Model"
-        xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel" 
-        xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
-        mc:Ignorable="d"
-        DataContext="{DynamicResource vm}"
-    Title="Окно теста" Height="450" Width="800" >
+            xmlns:m="clr-namespace:TestAO1145WPF.Model"
+    xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel" 
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
+    mc:Ignorable="d"
+    DataContext="{DynamicResource vm1}"
+Title="Окно теста" Height="450" Width="800" >
     <Window.Resources >
-        <vm:TestWinVM x:Key ="vm"/>
+        <vm:TestWinVM x:Key ="vm1"/>
+        <DataTemplate DataType="{x:Type vm:QTestType1}">
+        <StackPanel DataContext="{Binding Question}" Margin="0 0 0 20">
+            <TextBlock  Text="{Binding Name}"  FontFamily="Impact" FontSize="15" Foreground="#FF7F3838"/>
+            <ListBox Margin="20 0 0 0" 
+                         SelectionChanged="ListBox_SelectionChanged"
+                         ItemsSource="{Binding Answers}" 
+                         FontFamily="Impact" FontSize="15"
+                         Foreground="#FF7F3838">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListBoxItem">
+                                    <Border x:Name="Border" 
+                                                Padding="5" 
+                                                Background="Transparent">
+                                        <StackPanel Orientation="Horizontal">
+                                            <!-- Галочка (изначально скрыта) -->
+                                            <TextBlock x:Name="CheckMark" 
+                                           Text="✓" 
+                                           Foreground="#7F3838"
+                                           FontWeight="Bold"
+                                           Width="20"
+                                           Visibility="Collapsed"                                           
+                                           Tag="{Binding}"
+                                           VerticalAlignment="Center">
+                                            </TextBlock>
+
+                                            <!-- Текст ответа -->
+                                            <TextBlock Text="{Binding Text}" 
+                                           VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Border>
+
+                                    <ControlTemplate.Triggers>
+                                        <!-- Показываем галочку при выборе -->
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter TargetName="CheckMark" 
+                                        Property="Visibility" 
+                                        Value="Visible"/>
+                                            <Setter TargetName="Border" 
+                                        Property="Background" 
+                                        Value="#E6D7B9"/>
+                                        </Trigger>
+
+                                        <!-- Эффект при наведении -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="Border" 
+                                        Property="Background" 
+                                        Value="#E6D7B9"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
+        </StackPanel>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:QTestType2}">
+        <StackPanel DataContext="{Binding Question}" Margin="0 0 0 20">
+            <TextBlock  Text="{Binding Name}"  FontFamily="Impact" FontSize="15" Foreground="#FF7F3838"/>
+            <ListBox Margin="20 0 0 0"  ItemsSource="{Binding Answers}"
+                         SelectionMode="Multiple"
+                         SelectionChanged="ListBox_SelectionChanged"
+                         FontFamily="Impact" FontSize="15" Foreground="#FF7F3838">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListBoxItem">
+                                    <Border x:Name="Border" 
+                                Padding="5" 
+                                Background="Transparent">
+                                        <StackPanel Orientation="Horizontal">
+                                            <!-- Галочка (изначально скрыта) -->
+                                            <TextBlock x:Name="CheckMark" 
+                                               Text="✓" 
+                                               Foreground="#7F3838"
+                                               FontWeight="Bold"
+                                               Width="20"
+                                               Visibility="Collapsed"
+                                               VerticalAlignment="Center"/>
+
+                                            <!-- Текст ответа -->
+                                            <TextBlock Text="{Binding Text}" 
+                           VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Border>
+
+                                    <ControlTemplate.Triggers>
+                                        <!-- Показываем галочку при выборе -->
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter TargetName="CheckMark" 
+                        Property="Visibility" 
+                        Value="Visible"/>
+                                            <Setter TargetName="Border" 
+                        Property="Background" 
+                        Value="#E6D7B9"/>
+                                        </Trigger>
+
+                                        <!-- Эффект при наведении -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="Border" 
+                        Property="Background" 
+                        Value="#E6D7B9"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
+        </StackPanel>
+    </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:QTestType3  }">
+        <StackPanel DataContext="{Binding Question}" Margin="0 0 0 20">
+            <TextBlock Text="{Binding Name}"  FontFamily="Impact" FontSize="15" Foreground="#FF7F3838"/>
+            <Label Content="Напишите ответ:"/>
+            <TextBox Text="{Binding StudentAnswer}"/>
+        </StackPanel>
+    </DataTemplate>
     </Window.Resources >
     <Grid Background="PapayaWhip" >
         <Grid.RowDefinitions>
@@ -19,6 +143,7 @@
             <RowDefinition Height="30"/>
             <RowDefinition/>
             <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.ColumnSpan="4"  Background="PeachPuff" >
             <Button Content="назад " Command="{Binding Back}" 
@@ -35,26 +160,18 @@
             <Label Content="{Binding Test.Name}" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838" Width="250"/>
         </StackPanel>
         <ListBox ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.Row="2" Background="PapayaWhip"                    
-                    ItemsSource="{Binding QuestionList}" SelectedItem="{Binding Question}" x:Name="UserMenuLB" >
-                 <ListBox.ItemTemplate >
-                <DataTemplate >
-                    <StackPanel >
-                        <TextBlock  Text="{Binding Name}"  FontFamily="Impact" FontSize="15" Foreground="#FF7F3838"/>
-                        <ItemsControl Margin="20 0 0 0"  ItemsSource="{Binding Answers}"  FontFamily="Impact" FontSize="15" Foreground="#FF7F3838">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <CheckBox Content="{Binding Text}"
-                                              IsChecked="{Binding IsChecked}" Foreground="#FF7F3838"/>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-                       
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-            </ListBox>
-            <Button Content="Завершить" Command="{Binding Post}" Grid.Row="3" HorizontalAlignment="Center"
+                    ItemsSource="{Binding QuestionList}" 
+                 SelectedItem="{Binding Question}" x:Name="UserMenuLB" />
+        <StackPanel Grid.Row="3" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button Content="Назад" Command="{Binding QBack}" 
+       Background="{x:Null}" FontFamily="Impact" FontSize="15"
+                    Foreground="#FF7F3838" BorderBrush="{x:Null}"/>
+            <Button Content="Вперед" Command="{Binding QNext}" 
+Background="{x:Null}" FontFamily="Impact" FontSize="15"
+             Foreground="#FF7F3838" BorderBrush="{x:Null}"/>
+        </StackPanel>
+        <Button Content="Завершить" Command="{Binding SendResult}" Grid.Row="4" Margin="0 0 20 10" HorizontalAlignment="Right"
                Background="{x:Null}" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838" BorderBrush="{x:Null}"/>
-       
+
     </Grid>
 </Window>

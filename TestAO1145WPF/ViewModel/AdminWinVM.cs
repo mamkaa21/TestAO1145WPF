@@ -8,6 +8,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 using System.Windows.Threading;
 using TestAO1145WPF.Model;
 using TestAO1145WPF.View;
@@ -105,12 +106,14 @@ namespace TestAO1145WPF.ViewModel
         //public Command OpenDeleteT { get; }
         //public Command OpenDeleteST { get; }
 
+        public ICommand DoubleClickCommand { get; }
+
         JsonSerializerOptions options = new JsonSerializerOptions();
         public AdminWinVM() {
             timerStart();
             OpenAddTeacher = new Command(async () =>
             {
-                AddTeacherWin    addTeacherWin = new AddTeacherWin();
+                AddTeacherWin addTeacherWin = new AddTeacherWin(null);
                 addTeacherWin.Show();
                 Signal();   
             });
@@ -120,7 +123,31 @@ namespace TestAO1145WPF.ViewModel
                 //mainWindow.Show();
                 Signal();
             });
+
+            DoubleClickCommand = new RelayCommand(arg => {
+                var win = new AddTeacherWin(arg);
+                win.Show();
+            });
         }
+
+        public async void GetAllClass()
+        {
+            string arg = JsonSerializer.Serialize(Teacher);
+            var responce = await HttpClients.HttpClient.GetAsync($"Admin/GetAllClass");
+
+            if (responce.StatusCode == System.Net.HttpStatusCode.BadRequest)
+            {
+                var result = await responce.Content.ReadAsStringAsync();
+                MessageBox.Show(result);
+                return;
+            }
+            if (responce.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                ClassList = await responce.Content.ReadFromJsonAsync<List<Class>>();
+                return;
+            }
+        }
+
         public async void GetAllTeacher()
         {
             string arg = JsonSerializer.Serialize(Teacher);
@@ -189,6 +216,8 @@ namespace TestAO1145WPF.ViewModel
             thread3.Start();
             Thread thread2 = new Thread(GetAllTeacher);
             thread2.Start();
+            Thread thread4 = new Thread(GetAllClass);
+            thread4.Start();
         }
 
         internal void SetWindow(AdminWin adminWin)

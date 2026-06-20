@@ -16,14 +16,13 @@ using TestAO1145WPF.ViewModel;
 namespace TestAO1145WPF.View
 {
     /// <summary>
-    /// Логика взаимодействия для ResultWin.xaml
+    /// Логика взаимодействия для TestPostTestByStWin.xaml
     /// </summary>
-    public partial class ResultWin : Window
+    public partial class TestPostTestByStWin : Window
     {
-        public ResultWin()
+        public TestPostTestByStWin()
         {
             InitializeComponent();
-            (DataContext as ResultWinVM).SetWindow(this);
         }
     }
 }

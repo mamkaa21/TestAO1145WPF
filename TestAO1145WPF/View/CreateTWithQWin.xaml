@@ -9,39 +9,103 @@
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"     
         mc:Ignorable="d"
         DataContext="{DynamicResource vm}"
-    Title="Окно создания тестов" Height="450" Width="800">
+    Title="Окно редактирования тестов" Height="450" Width="800">
     <Window.Resources >
-        <vm:CreateTestWinVM x:Key ="vm"/>
-        <Style TargetType="{x:Type TabItem}">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type TabItem}">
-                        <!-- Border — это сама "шапка" вкладки -->
-                        <Border Name="Border"  
-                     SnapsToDevicePixels="True">
-                            <!-- Текст внутри вкладки -->
-                            <ContentPresenter x:Name="ContentSite"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center"
-                                   ContentSource="Header"
-                                   Margin="12,2,12,2"
-                                   RecognizesAccessKey="True"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <!-- КОГДА ВКЛАДКА ВЫБРАНА -->
-                            <Trigger Property="IsSelected" Value="True">
-                                <!-- Здесь меняем цвет фона на тот же, что и у панели (или другой) -->
-                                <Setter TargetName="Border" Property="Background" Value="PapayaWhip"/>
-                            </Trigger>
-                            <!-- КОГДА МЫШКА НАВЕДЕНА (Hover) -->
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Border" Property="Background" Value="PeachPuff"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+        <vm:CreateTWithQWinVM x:Key ="vm"/>
+        <ControlTemplate x:Key="TemplateOneAnswer">
+            <StackPanel>
+                <Label Content="Вы можете выбрать один правильный вариант ответа"/>
+                <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <ListBox ItemsSource="{Binding Answers}" HorizontalContentAlignment="Stretch" MaxHeight="150">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <RadioButton Tag="{Binding}" IsChecked="{Binding RightAnswer}" Checked="OneAnswer_Checked" ToolTip="Верный ответ"/>
+                                <TextBox Text="{Binding Text}" Grid.Column="1"/>
+                                <Button Content="🚽" 
+                                        Command="{Binding RemoveAnswer}" CommandParameter="{Binding}"
+                                        Grid.Column="2"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <Button  Content="Добавить ответ" Grid.Row="1" Command="{Binding AddAnswer}" DataContext="{StaticResource vm}"/>
+                <Button  Content="Сохранить вопрос" Grid.Row="2" Command="{Binding SaveQuestion}" DataContext="{StaticResource vm}"/>
+            </Grid>
+            </StackPanel>
+        </ControlTemplate>
+        <ControlTemplate x:Key="TemplateManyAnswer">
+            <StackPanel>
+                <Label Content="Вы можете выбрать несколько правильных вариантов ответа"/>
+                <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <ListBox ItemsSource="{Binding Answers}" HorizontalContentAlignment="Stretch" MaxHeight="150">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <CheckBox Tag="{Binding}" IsChecked="{Binding RightAnswer}" ToolTip="Верный ответ"/>
+                                <TextBox Text="{Binding Text}" Grid.Column="1"/>
+                                <Button Content="🚽" 
+                            Command="{Binding RemoveAnswer}" CommandParameter="{Binding}"
+                            Grid.Column="2"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <Button  Content="Добавить ответ" Grid.Row="1" Command="{Binding AddAnswer}" DataContext="{StaticResource vm}"/>
+                <Button  Content="Сохранить вопрос" Grid.Row="2" Command="{Binding SaveQuestion}" DataContext="{StaticResource vm}"/>
+                </Grid>
+            </StackPanel>
+        </ControlTemplate>
+        <ControlTemplate x:Key="TemplateHandAnswer">
+            <StackPanel>
+                <Label Content="Вы можете указать несколько вариаций правильного ответа"/>
+                <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <ListBox ItemsSource="{Binding Answers}" HorizontalContentAlignment="Stretch" MaxHeight="150">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox Text="{Binding Text}" />
+                                <Button Content="🚽" 
+                    Command="{Binding RemoveAnswer}" CommandParameter="{Binding}"
+                    Grid.Column="1"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <Button  Content="Добавить ответ" Grid.Row="1" Command="{Binding AddAnswer}" DataContext="{StaticResource vm}"/>
+                <Button  Content="Сохранить вопрос" Grid.Row="2" Command="{Binding SaveQuestion}" DataContext="{StaticResource vm}"/>
+            </Grid>
+            </StackPanel>
+        </ControlTemplate>
         <!--стиль табайтема-->
         <Style TargetType="ComboBoxItem">
             <Setter Property="Background" Value="PapayaWhip"/>
@@ -157,7 +221,7 @@
     <Grid  Background="PeachPuff">
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
-            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -168,29 +232,33 @@
         <!--<TabControl Grid.Row="1" Grid.ColumnSpan="7" Grid.RowSpan="7"  Background="PapayaWhip" BorderBrush="{x:Null}">
             <TabItem Header=""  Background="PeachPuff" Margin="0 0 0 -2"
                       FontFamily="Impact" FontSize="15" Foreground="#FF7F3838">-->
-        <StackPanel Grid.Row="1" Grid.RowSpan="2" Background="PapayaWhip"> 
-            <Label Content="Количество воппросов:"  Foreground="#FF7F3838" FontFamily="Impact" FontSize="15"/> 
-            <TextBox Text="{Binding Question.Name}" FontFamily="Impact" FontSize="15"
-                             Foreground="#FF7F3838" BorderThickness="0 0 0 1" BorderBrush="#FF7F3838"  Background="PapayaWhip"/>
-            <ComboBox ItemsSource="{Binding Question}" SelectedItem="{Binding Subject}" DisplayMemberPath="{Binding Subject.Name}" 
-                  Foreground="#FF7F3838"/>
-           
-          
-            <Label Content="Преподаватель" Foreground="#FF7F3838" FontFamily="Impact" FontSize="15"/>
-            <StackPanel Orientation="Horizontal" >
-                <Label Content="{Binding Teacher.LastName}" FontFamily="Impact" FontSize="15" Width="180"
-                  Foreground="#FF7F3838" BorderThickness="0 0 0 1" BorderBrush="#FF7F3838"  Background="PapayaWhip"/>
-                <Label Content="{Binding Teacher.LastName}" FontFamily="Impact" FontSize="15" Width="180"
-                  Foreground="#FF7F3838" BorderThickness="0 0 0 1" BorderBrush="#FF7F3838"  Background="PapayaWhip"/>
-                <Label Content="" Foreground="#FF7F3838" Width="440" BorderThickness="0 0 0 1" BorderBrush="#FF7F3838"/>
-            </StackPanel>
-            <Label Content="Предмет" Foreground="#FF7F3838" FontFamily="Impact" FontSize="15"/>
-            
-            <!--SelectedValuePath="{Binding Good.Category}"-->
+        <StackPanel Grid.Row="1" Background="PapayaWhip">
+            <Label Content="Тест"  Foreground="#FF7F3838" FontFamily="Impact" FontSize="15"/>
+            <TextBlock Text="{Binding Test.Name}" FontFamily="Impact" FontSize="15"
+                 Foreground="#FF7F3838"  Background="PapayaWhip"/>
         </StackPanel>
-        <Button  Grid.Row="3" Content="Далее" Command="{Binding OpenCreateQForT}" FontFamily="Impact" FontSize="15"
-                            Foreground="#FF7F3838"  BorderBrush="{x:Null}"  Background="PapayaWhip"/>
-        <!--</TabItem>
-        </TabControl>-->
+        <Grid Grid.Row="2" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Menu>
+                <MenuItem Header="➕ Тип вопроса">
+                    <MenuItem Header="Один правильный ответ" Command="{Binding OneAnswer}"/>
+                    <MenuItem Header="Несколько правильных ответов" Command="{Binding ManyAnswer}"/>
+                    <MenuItem Header="Ручной ввод ответа"  Command="{Binding HandAnswer}"/>
+                </MenuItem>
+            </Menu>
+            <ListBox ItemsSource="{Binding Questions}" SelectedItem="{Binding Question}" Grid.Row="1" DisplayMemberPath="NameSlice"/>
+            <StackPanel Grid.Column="1" Grid.Row="1">
+                <Label Content="Текст вопроса:"/>
+                <TextBox TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" MinLines="5" MaxLines="20" Text="{Binding Question.Name}"/>
+                <ItemsControl DataContext="{Binding Question}" x:Name="answersControl"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

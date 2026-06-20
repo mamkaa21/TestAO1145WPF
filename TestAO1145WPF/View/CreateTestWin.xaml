@@ -181,16 +181,16 @@
                 <Label Content="" Foreground="#FF7F3838" Width="440" BorderThickness="0 0 0 1" BorderBrush="#FF7F3838"/>
             </StackPanel>
             <Label Content="Предмет" Foreground="#FF7F3838" FontFamily="Impact" FontSize="15"/>
-            <ComboBox ItemsSource="{Binding SubjectList}" SelectedItem="{Binding Subject}" DisplayMemberPath="{Binding Subject.Name}" 
+            <ComboBox ItemsSource="{Binding SubjectList}" SelectedItem="{Binding Subject}" DisplayMemberPath="Name" 
                               Foreground="#FF7F3838"/>
-            <Label Content="Количество вопросов"  Foreground="#FF7F3838" FontFamily="Impact" FontSize="15"/>
+            <Label Content="Количество вопросов при прохождении"  Foreground="#FF7F3838" FontFamily="Impact" FontSize="15"/>
             <TextBox Text="{Binding Test.CountQuestionTest}" FontFamily="Impact" FontSize="15"
-                 Foreground="#FF7F3838" BorderThickness="0 0 0 1" BorderBrush="#FF7F3838"  Background="PapayaWhip"/>
-            <!--SelectedValuePath="{Binding Good.Category}"-->           
-                </StackPanel> 
-                <Button  Grid.Row="3" Content="Далее" Command="{Binding OpenCreateQForT}" FontFamily="Impact" FontSize="15"
+                 Foreground="#FF7F3838" BorderThickness="0 0 0 1" Margin="0 0 0 20" BorderBrush="#FF7F3838"  Background="PapayaWhip"/>
+            <!--SelectedValuePath="{Binding Good.Category}"-->
+        </StackPanel>
+        <Button  Grid.Row="3" Content="Далее" Command="{Binding OpenCreateQForT}" FontFamily="Impact" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"
                             Foreground="#FF7F3838"  BorderBrush="{x:Null}"  Background="PapayaWhip"/>
-            <!--</TabItem>
+        <!--</TabItem>
         </TabControl>-->
     </Grid>
 </Window>

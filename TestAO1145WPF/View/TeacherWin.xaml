@@ -33,15 +33,9 @@
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseDoubleClick">
                     <i:InvokeCommandAction Command="{Binding DoubleClickCommand}"
-                           CommandParameter="{Binding ElementName=UserMenuLB, Path=SelectedItem}"/>
+                           CommandParameter="{Binding ElementName=UserMenuL, Path=SelectedItem}"/>
                 </i:EventTrigger>
-            </i:Interaction.Triggers>
-            <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel />
-                    <!--тут ничего не трогать!!!-->
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
+            </i:Interaction.Triggers>          
             <ListBox.ItemTemplate >
                 <DataTemplate >
                     <StackPanel Orientation="Horizontal">

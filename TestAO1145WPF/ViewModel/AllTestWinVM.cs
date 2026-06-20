@@ -54,9 +54,9 @@ namespace TestAO1145WPF.ViewModel
 
             if (parameter is Test Test)
             {
-                //TestWin goodWin = new TestWin(Test);
-                //goodWin.Show();
-                //Signal();
+                TestWin goodWin = new TestWin(Test);
+                goodWin.Show();
+                Signal();
             }
         }
         public async void GetAllTest()

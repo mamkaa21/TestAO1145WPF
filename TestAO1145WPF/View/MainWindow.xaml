@@ -25,28 +25,57 @@
             <Button Content=" Окно профиля"  HorizontalAlignment="Left" Command="{Binding OpenUserStWin}" 
                     Background="PeachPuff" BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838"/>
         </StackPanel>
-        <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.Row="2" Background="PapayaWhip"
-                    ItemsSource="{Binding TestList}" SelectedItem="{Binding Test}" x:Name="UserMenuLB" Height="405">
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseDoubleClick">
-                    <i:InvokeCommandAction Command="{Binding DoubleClickCommand}"
-                                          CommandParameter="{Binding ElementName=UserMenuLB, Path=SelectedItem}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-            <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel />
-                    <!--тут ничего не трогать!!!-->
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
-            <ListBox.ItemTemplate >
-                <DataTemplate >
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock  Text="{Binding Name, StringFormat={}Название теста: {0}}" Foreground="#FF7F3838"/>
-                        <TextBlock Margin="20 0 0 0"  Text="{Binding Teacher, StringFormat={}Преподаватель: {0}}" Foreground="#FF7F3838"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <Grid Grid.Row="1" Visibility="{Binding SelectPrepod}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock Text="Выберите преподавателя" FontSize="15" Foreground="#FF7F3838"/>
+            <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.Row="2" Background="PapayaWhip"
+    ItemsSource="{Binding PrepodList}" SelectedItem="{Binding Prepod}" x:Name="UserMenuLB" Height="405">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick">
+                        <i:InvokeCommandAction Command="{Binding DoubleClickCommand}"
+                          CommandParameter="{Binding ElementName=UserMenuLB, Path=SelectedItem}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+
+                <ListBox.ItemTemplate >
+                    <DataTemplate >
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="20 0 0 0"  Text="{Binding StringFormat={}Преподаватель: {0}}" Foreground="#FF7F3838"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+        <Grid Grid.Row="1" Visibility="{Binding SelectTest}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Назад" Command="{Binding Back}" Margin="5"/>
+                <TextBlock Text="Выберите тест преподавателя" FontSize="15" Foreground="#FF7F3838"/>
+            </StackPanel>
+            <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.Row="2" Background="PapayaWhip"
+ItemsSource="{Binding TestList}" SelectedItem="{Binding Test}" x:Name="UserMenu1LB" Height="405">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick">
+                        <i:InvokeCommandAction Command="{Binding DoubleClickCommandNext}"
+                      CommandParameter="{Binding ElementName=UserMenu1LB, Path=SelectedItem}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+
+                <ListBox.ItemTemplate >
+                    <DataTemplate >
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock  Text="{Binding Name, StringFormat={}Название теста: {0}}" Foreground="#FF7F3838"/>
+                            <TextBlock Margin="20 0 0 0"  Text="{Binding Subject, StringFormat={}ПРедмет: {0}}" Foreground="#FF7F3838"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
     </Grid>
 </Window>

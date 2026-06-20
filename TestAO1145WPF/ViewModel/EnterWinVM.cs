@@ -47,27 +47,34 @@ namespace TestAO1145WPF.ViewModel
                     var data = await responce.Content.ReadFromJsonAsync<List<string>>();
                     var token = data[1];
                     var type = data[0];
+                    var userJson = data[2];
                     HttpClients.SetToken(token);
 
                     //
                     //var d = await responce.Content.ReadFromJsonAsync<StModel>();
                     if (type == "1")
                     {
+                        CurrentUser.student = JsonSerializer.Deserialize<Student>(userJson);
                         var studResponce = await HttpClients.HttpClient.GetAsync($"Student");
                         var student = await studResponce.Content.ReadFromJsonAsync<Student>();
                         MainWindow mainWindow = new MainWindow(student);
                         mainWindow.Show();
+                        CloseWindow();
                     }
                     else if (type == "2")
                     {
+                        CurrentUser.teacher = JsonSerializer.Deserialize<Teacher>(userJson);
                         TeacherWin teacherWin = new TeacherWin();
                         teacherWin.Show();
+                        CloseWindow();
                     }
                     else
                     {
+                        CurrentUser.teacher = JsonSerializer.Deserialize<Teacher>(userJson);
                         AdminWin adminWin = new AdminWin();
                         adminWin.Show();
-                       
+                        CloseWindow();
+
                     } return;
                     //if (d.RoleId == 1) //сначала лезем к студентам ищем потом к учителям потом к админу
                     //{
@@ -99,7 +106,7 @@ namespace TestAO1145WPF.ViewModel
         {
             this.enterWindow = enterWindow;
         }
-        internal void CloseWindow(EnterWin enterWindow)
+        internal void CloseWindow()
         {
             this.enterWindow.Close();
         }

@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TestAO1145WPF.Model;
+using TestAO1145WPF.ViewModel;
 
 namespace TestAO1145WPF.View
 {
@@ -19,9 +21,19 @@ namespace TestAO1145WPF.View
     /// </summary>
     public partial class CreateTWithQWin : Window
     {
-        public CreateTWithQWin()
+        public CreateTWithQWin(Model.Test test)
         {
             InitializeComponent();
+            (DataContext as CreateTWithQWinVM).Test = test;
+            (DataContext as CreateTWithQWinVM).SetControl(answersControl);
+            (DataContext as CreateTWithQWinVM).SetWindow(this);
+        }
+
+     
+
+        private void OneAnswer_Checked(object sender, RoutedEventArgs e)
+        {
+            (DataContext as CreateTWithQWinVM).OneAnswerChecked(((Control)sender).Tag as Answer);
         }
     }
 }

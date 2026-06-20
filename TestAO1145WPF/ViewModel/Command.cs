@@ -25,4 +25,23 @@ namespace TestAO1145WPF.ViewModel
             action();
         }
     }
+
+    public class Command<T> : ICommand
+    {
+        Action<T> action;
+        public Command(Action<T> action)
+        {
+            this.action = action;
+        }
+        public event EventHandler? CanExecuteChanged;
+        public bool CanExecute(object? parameter)
+        {
+            return true;
+        }
+
+        public void Execute(object? parameter)
+        {
+            action((T)parameter);
+        }
+    }
 }

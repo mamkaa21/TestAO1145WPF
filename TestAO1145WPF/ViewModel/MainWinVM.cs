@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
@@ -7,6 +8,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
 using TestAO1145WPF.Model;
@@ -16,6 +18,23 @@ namespace TestAO1145WPF.ViewModel
 {
     class MainWinVM : BaseVM
     {
+        public Visibility SelectPrepod
+        {
+            get => selectPrepod;
+            set
+            {
+                selectPrepod = value;
+                Signal(nameof(SelectPrepod));
+            }
+        }
+        public Visibility SelectTest
+        {
+            get => selectTest; set
+            {
+                selectTest = value;
+                Signal(nameof(SelectTest));
+            }
+        }
         private Test test { get; set; }
         public Test Test
         {
@@ -26,14 +45,32 @@ namespace TestAO1145WPF.ViewModel
                 Signal(nameof(Test));
             }
         }
-        private List<Test> testList { get; set; }
-        public List<Test> TestList
+        private ObservableCollection<Test> testList { get; set; }
+        public ObservableCollection<Test> TestList
         {
             get => testList;
             set
             {
                 testList = value;
                 Signal(nameof(TestList));
+            }
+        }
+        private List<string> prepodList { get; set; }
+        public List<string> PrepodList
+        {
+            get => prepodList;
+            set
+            {
+                prepodList = value;
+                Signal(nameof(PrepodList));
+            }
+        }
+        public string Prepod
+        {
+            get => prepod; set
+            {
+                prepod = value;
+                Signal(nameof(Prepod));
             }
         }
         private Student student { get; set; }
@@ -52,6 +89,8 @@ namespace TestAO1145WPF.ViewModel
         public Command OpenAllTestForOneStWin { get; }
         public Command OpenUserStWin { get; }
         public ICommand DoubleClickCommand { get; private set; }
+        public ICommand DoubleClickCommandNext { get; private set; }
+        public Command Back { get; private set; }
         public MainWinVM()
         {
             timerStart();
@@ -73,9 +112,26 @@ namespace TestAO1145WPF.ViewModel
                 userStWin.Show();
                 Signal();
             });
-            DoubleClickCommand = new RelayCommand(DoubleClickExecute);          
+            Back = new Command(() =>
+            {
+                SelectTest = Visibility.Collapsed;
+                SelectPrepod = Visibility.Visible;
+                timerStart();
+            });
+            DoubleClickCommand = new RelayCommand(DoubleClickExecute);
+            DoubleClickCommandNext = new RelayCommand(DoubleClickExecuteNext);
         }
         private void DoubleClickExecute(object parameter)
+        {
+            foreach (var item in TestList.Where(s => s.Teacher != Prepod).ToList())
+            {
+                TestList.Remove(item);
+            }
+
+            SelectPrepod = Visibility.Collapsed;
+            SelectTest = Visibility.Visible;
+        }
+        private void DoubleClickExecuteNext(object parameter)
         {
             if (parameter is Test Test)
             {
@@ -97,7 +153,8 @@ namespace TestAO1145WPF.ViewModel
             }
             if (responce.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                TestList = await responce.Content.ReadFromJsonAsync<List<Test>>();
+                TestList =new ObservableCollection<Test>( await responce.Content.ReadFromJsonAsync<List<Test>>());
+                PrepodList = TestList.Select(s => s.Teacher).Distinct().ToList();
                 return;
             }
         }
@@ -105,15 +162,21 @@ namespace TestAO1145WPF.ViewModel
         {
             timer = new DispatcherTimer();
             timer.Tick += new EventHandler(timerTick);
-            timer.Interval = new TimeSpan(0, 0, 10);
+            timer.Interval = new TimeSpan(0, 0, 0, 0, 100);
             timer.Start();
         }
         private void timerTick(object sender, EventArgs e) //к таймеру относится 
         {
             Thread thread1 = new Thread(GetAllTest);
-            thread1.Start();           
+            thread1.Start();
+            timer.Stop();
         }
+
         MainWindow mainWindow;
+        private Visibility selectPrepod = Visibility.Visible;
+        private Visibility selectTest = Visibility.Collapsed;
+        private string prepod;
+
         internal void SetWindow(MainWindow mainWindow)
         {
             this.mainWindow = mainWindow;

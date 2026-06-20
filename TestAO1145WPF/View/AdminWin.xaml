@@ -71,15 +71,9 @@ xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="MouseDoubleClick">
                                 <i:InvokeCommandAction Command="{Binding DoubleClickCommand}"
-                                          CommandParameter="{Binding ElementName=UserMenuLB, Path=SelectedItem}"/>
+                                          CommandParameter="{Binding Teacher}"/>
                             </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                        <ListBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel />
-                                <!--тут ничего не трогать!!!-->
-                            </ItemsPanelTemplate>
-                        </ListBox.ItemsPanel>
+                        </i:Interaction.Triggers>                       
                         <ListBox.ItemTemplate >
                             <DataTemplate >
                                 <StackPanel Orientation="Horizontal">
@@ -100,15 +94,10 @@ xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="MouseDoubleClick">
                                 <i:InvokeCommandAction Command="{Binding DoubleClickCommand}"
-                           CommandParameter="{Binding ElementName=UserMenuLB, Path=SelectedItem}"/>
+                           CommandParameter="{Binding Student}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
-                        <ListBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel />
-                                <!--тут ничего не трогать!!!-->
-                            </ItemsPanelTemplate>
-                        </ListBox.ItemsPanel>
+                       
                         <ListBox.ItemTemplate >
                             <DataTemplate >
                                 <StackPanel  Orientation="Horizontal" >
@@ -128,15 +117,9 @@ ItemsSource="{Binding SubjectList}" SelectedItem="{Binding Subject}" x:Name="Use
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="MouseDoubleClick">
                                 <i:InvokeCommandAction Command="{Binding DoubleClickCommand}"
-                      CommandParameter="{Binding ElementName=UserMenuLB, Path=SelectedItem}"/>
+                      CommandParameter="{Binding Subject}"/>
                             </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                        <ListBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel />
-                                <!--тут ничего не трогать!!!-->
-                            </ItemsPanelTemplate>
-                        </ListBox.ItemsPanel>
+                        </i:Interaction.Triggers>                       
                         <ListBox.ItemTemplate >
                             <DataTemplate >
                                 <StackPanel Orientation="Vertical">
@@ -150,19 +133,13 @@ ItemsSource="{Binding SubjectList}" SelectedItem="{Binding Subject}" x:Name="Use
             <TabItem Header="Группы" Margin="0 0 0 -2" Background="PeachPuff" BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838">
                 <StackPanel>
                     <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible" Background="PapayaWhip" Foreground="#FF7F3838"
-ItemsSource="{Binding ClassList}" SelectedItem="{Binding Clas}" x:Name="UserMefnu" Height="386" BorderBrush="{x:Null}">
+ItemsSource="{Binding ClassList}" SelectedItem="{Binding Class}" x:Name="UserMefnu" Height="386" BorderBrush="{x:Null}">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="MouseDoubleClick">
                                 <i:InvokeCommandAction Command="{Binding DoubleClickCommand}"
-                      CommandParameter="{Binding ElementName=UserMenuLB, Path=SelectedItem}"/>
+                      CommandParameter="{Binding Class}"/>
                             </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                        <ListBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel />
-                                <!--тут ничего не трогать!!!-->
-                            </ItemsPanelTemplate>
-                        </ListBox.ItemsPanel>
+                        </i:Interaction.Triggers>                       
                         <ListBox.ItemTemplate >
                             <DataTemplate >
                                 <StackPanel >
