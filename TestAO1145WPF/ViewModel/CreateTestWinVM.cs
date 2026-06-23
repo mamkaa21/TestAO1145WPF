@@ -71,6 +71,7 @@ namespace TestAO1145WPF.ViewModel
         public CreateTestWinVM()
         {
             Teacher = CurrentUser.teacher;
+            LoadSubjects();
             OpenCreateQForT = new Command(async () => 
             {
                 if (Subject == null)
@@ -97,7 +98,7 @@ namespace TestAO1145WPF.ViewModel
                 CreateTWithQWin createTWith = new CreateTWithQWin(Test);
                 createTWith.Show();
             });
-            LoadSubjects();
+           
         }
 
         private async void LoadSubjects()
@@ -113,6 +114,7 @@ namespace TestAO1145WPF.ViewModel
             if (responce.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 SubjectList = await responce.Content.ReadFromJsonAsync<List<Subject>>();
+                return;
             }
         }
     }

@@ -39,14 +39,14 @@ Title="Окно профиля" Height="450" Width="800">
                Background="PeachPuff" BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838"/>
             </StackPanel>
             <Label Content="Студент " FontFamily="Impact" FontSize="20" Foreground="#FF7F3838"  Grid.Row="2"  />
-            <TextBox Text="{Binding Student.LastName}" Background="PapayaWhip"
+            <Label Content="{Binding Student.LastName}" Background="PapayaWhip"
                      BorderThickness="0 0 0 2" BorderBrush="#FF7F3838"   IsEnabled="{Binding ListBoxEnabled}" Grid.Row="2" Grid.Column="1" 
               Height="30" VerticalAlignment="Top"/>
-            <TextBox Text="{Binding Student.FirstName}"  Background="PapayaWhip"
+            <Label Content="{Binding Student.FirstName}"  Background="PapayaWhip"
                      BorderThickness="0 0 0 2" BorderBrush="#FF7F3838"   IsEnabled="{Binding ListBoxEnabled}" Grid.Row="2" Grid.Column="2" 
               Height="30" VerticalAlignment="Top"/>
             <Label Content="Группа "  FontFamily="Impact" FontSize="20" Foreground="#FF7F3838"  Grid.Row="3"  />
-            <TextBox Text="{Binding Student.Class}" BorderThickness="0 0 0 2" BorderBrush="#FF7F3838"
+            <Label Content="{Binding Student.Class}" BorderThickness="0 0 0 2" BorderBrush="#FF7F3838"
                      Background="PapayaWhip"  IsEnabled="{Binding ListBoxEnabled}" Grid.Row="3" Grid.Column="1" 
               Height="30" VerticalAlignment="Top"/>
         </Grid>

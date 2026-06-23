@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using TestAO1145WPF.Model;
 using TestAO1145WPF.View;
 
@@ -21,24 +23,24 @@ namespace TestAO1145WPF.ViewModel
             }
         }
 
-        private Class clas {  get; set; }
-        public Class Clas
+        private Subject subject { get; set; }
+        public Subject Subject
         {
-            get => clas;
-            set
-                { clas = value;
-            Signal(nameof(Clas));
-            }
-        }
-
-        private List<Class> classlist { get; set; }
-        public List<Class> ClassList
-        {
-            get => classlist;
+            get => subject;
             set
             {
-                classlist = value;
-                Signal(nameof(ClassList));
+                subject = value;
+                Signal(nameof(Subject));
+            }
+        }
+        private List<Subject> subjectList { get; set; }
+        public List<Subject> SubjectList
+        {
+            get => subjectList;
+            set
+            {
+                subjectList = value;
+                Signal(nameof(SubjectList));
             }
         }
         public Command OpenResultWin { get; }
@@ -47,7 +49,7 @@ namespace TestAO1145WPF.ViewModel
 
         public UserTWinVM()
         {
-           
+            
             OpenAllTestWin = new Command(async () =>
             {
                 AllTestWin allTestWin = new AllTestWin();
@@ -57,8 +59,10 @@ namespace TestAO1145WPF.ViewModel
             Back = new Command(async () =>
             {
 
+                
             });
-            //сюда метод геттеаче
+           
         }
+      
     }
 }

@@ -20,10 +20,11 @@ namespace TestAO1145WPF.View
     /// </summary>
     public partial class TeacherWin : Window
     {
-        public TeacherWin()
+        public TeacherWin(Model.Teacher? teacher)
         {
             InitializeComponent();
             (DataContext as TeacherWinVM).SetWindow(this);
+            (DataContext as TeacherWinVM).SetTeacher(teacher);
         }
     }
 }

@@ -244,6 +244,7 @@ xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
                     <TextBox Text="{Binding Student.Login}" Foreground="#5D0D18" BorderThickness="0 0 0 1" BorderBrush="#5D0D18"  Background="#FFF9EB"/>
                     <Label Content="Пароль"  Foreground="#5D0D18"/>
                     <TextBox Text="{Binding Student.Password}" Foreground="#5D0D18" BorderThickness="0 0 0 1" BorderBrush="#5D0D18"  Background="#FFF9EB"/>
+
                     <Button  Content="добавить" Command="{Binding SaveSt}" 
         Foreground="#5D0D18"  BorderBrush="{x:Null}"  Background="#FFF9EB"/>
                     <Button  Content="обновить" Command="{Binding EditSt}" 

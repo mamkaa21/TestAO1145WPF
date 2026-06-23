@@ -41,12 +41,12 @@ namespace TestAO1145WPF.ViewModel
         public AllTestWinVM()
         {
             timerStart();
-            Back = new Command(async()=>
-            {
-                TeacherWin teacherWin = new TeacherWin();   
-                teacherWin.Show();
-                //CloseWindow();
-            });
+            //Back = new Command(async()=>
+            //{
+            //    TeacherWin teacherWin = new TeacherWin();   
+            //    teacherWin.Show();
+            //    //CloseWindow();
+            //});
             DoubleClickCommand = new RelayCommand(DoubleClickExecute);
         }
         private void DoubleClickExecute(object parameter)

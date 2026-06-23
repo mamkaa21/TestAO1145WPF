@@ -35,6 +35,16 @@ namespace TestAO1145WPF.ViewModel
                 Signal(nameof(TestList));
             }
         }
+        private Teacher teacher { get; set; }
+        public Teacher Teacher
+        {
+            get => teacher;
+            set
+            {
+                teacher = value;
+                Signal(nameof(Teacher));
+            }
+        }
         private DispatcherTimer timer = null;
         public Command OpenResultWin { get; }
         public Command OpenAllTestWin { get; }
@@ -54,7 +64,7 @@ namespace TestAO1145WPF.ViewModel
             });
             OpenUserTWin = new Command(async () =>
             {
-                UserTWin usertWin = new UserTWin();
+                UserTWin usertWin = new UserTWin(Teacher);
                 usertWin.Show();
                 Signal();
             });
@@ -117,6 +127,9 @@ namespace TestAO1145WPF.ViewModel
         {
             this.teacherWin.Close();
         }
-
+        internal void SetTeacher(Teacher? teacher)
+        {
+            Teacher = teacher;
+        }
     }
 }

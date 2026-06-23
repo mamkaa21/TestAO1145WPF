@@ -11,5 +11,6 @@ namespace TestAO1145WPF
     {
         internal static Teacher teacher;
         internal static Student student;
+        internal static Admin admin;
     }
 }
