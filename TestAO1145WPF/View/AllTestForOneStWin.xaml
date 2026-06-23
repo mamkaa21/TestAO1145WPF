@@ -32,12 +32,6 @@
                        CommandParameter="{Binding ElementName=UserMenuLB, Path=SelectedItem}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
-            <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel />
-                    <!--тут ничего не трогать!!!-->
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
             <ListBox.ItemTemplate >
                 <DataTemplate >
                     <StackPanel Orientation="Horizontal" Width="800">

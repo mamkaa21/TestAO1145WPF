@@ -68,7 +68,6 @@ xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
             <!--Цвет фона закрытого комбобокса-->
             <Setter Property="BorderBrush" Value="{x:Null}"/>
             <!--Цвет рамки-->
-
             <Setter Property="Foreground" Value="#FF231717"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -196,7 +195,6 @@ xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
                                                         Width="20"
                                                         Visibility="Collapsed"
                                                         VerticalAlignment="Center"/>
-
                                                     <!-- Текст ответа -->
                                                     <TextBlock Text="{Binding Name}" 
                                                         VerticalAlignment="Center"/>

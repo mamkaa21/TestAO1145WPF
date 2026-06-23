@@ -171,7 +171,6 @@
                                     </ControlTemplate>
                                 </ToggleButton.Template>
                             </ToggleButton>
-
                             <!--Область, где отображается выбранный текст-->
                             <ContentPresenter Name="ContentSite" 
                                       IsHitTestVisible="False" 
@@ -181,7 +180,6 @@
                                       Margin="10,3,23,3" 
                                       VerticalAlignment="Center" 
                                       HorizontalAlignment="Left" />
-
                             <!--Выпадающий список (Popup)-->
                             <Popup Name="Popup" 
                            Placement="Bottom" 
@@ -204,7 +202,6 @@
                                 </Grid>
                             </Popup>
                         </Grid>
-
                         <ControlTemplate.Triggers>
                             <!--Триггер доступности (Enabled = False)-->
                             <Trigger Property="IsEnabled" Value="false">
@@ -216,7 +213,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
     </Window.Resources >
     <Grid  Background="PeachPuff">
         <Grid.RowDefinitions>
@@ -229,9 +225,6 @@
         </Grid.ColumnDefinitions>
         <Button Content="   Назад   " HorizontalAlignment="Left" Command="{Binding Back}"  
           Background="PeachPuff" BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838"/>
-        <!--<TabControl Grid.Row="1" Grid.ColumnSpan="7" Grid.RowSpan="7"  Background="PapayaWhip" BorderBrush="{x:Null}">
-            <TabItem Header=""  Background="PeachPuff" Margin="0 0 0 -2"
-                      FontFamily="Impact" FontSize="15" Foreground="#FF7F3838">-->
         <StackPanel Grid.Row="1" Background="PapayaWhip">
             <Label Content="Тест"  Foreground="#FF7F3838" FontFamily="Impact" FontSize="15"/>
             <TextBlock Text="{Binding Test.Name}" FontFamily="Impact" FontSize="15"

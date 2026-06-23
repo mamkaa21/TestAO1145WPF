@@ -42,7 +42,6 @@ Title="Окно теста" Height="450" Width="800" >
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
-
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

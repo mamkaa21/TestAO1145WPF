@@ -25,12 +25,12 @@ Title="Окно теста" Height="450" Width="800" >
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="ListBoxItem">
-                                    <Border x:Name="Border" 
+                                        <Border x:Name="Border" 
                                                 Padding="5" 
                                                 Background="Transparent">
-                                        <StackPanel Orientation="Horizontal">
-                                            <!-- Галочка (изначально скрыта) -->
-                                            <TextBlock x:Name="CheckMark" 
+                                            <StackPanel Orientation="Horizontal">
+                                                <!-- Галочка (изначально скрыта) -->
+                                                <TextBlock x:Name="CheckMark" 
                                            Text="✓" 
                                            Foreground="#7F3838"
                                            FontWeight="Bold"
@@ -38,26 +38,23 @@ Title="Окно теста" Height="450" Width="800" >
                                            Visibility="Collapsed"                                           
                                            Tag="{Binding}"
                                            VerticalAlignment="Center">
-                                            </TextBlock>
-
-                                            <!-- Текст ответа -->
-                                            <TextBlock Text="{Binding Text}" 
+                                                </TextBlock>
+                                                <!-- Текст ответа -->
+                                                <TextBlock Text="{Binding Text}" 
                                            VerticalAlignment="Center"/>
-                                        </StackPanel>
-                                    </Border>
-
-                                    <ControlTemplate.Triggers>
+                                            </StackPanel>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
                                         <!-- Показываем галочку при выборе -->
-                                        <Trigger Property="IsSelected" Value="True">
-                                            <Setter TargetName="CheckMark" 
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter TargetName="CheckMark" 
                                         Property="Visibility" 
                                         Value="Visible"/>
-                                            <Setter TargetName="Border" 
+                                                <Setter TargetName="Border" 
                                         Property="Background" 
                                         Value="#E6D7B9"/>
-                                        </Trigger>
-
-                                        <!-- Эффект при наведении -->
+                                            </Trigger>
+                                            <!-- Эффект при наведении -->
                                         <Trigger Property="IsMouseOver" Value="True">
                                             <Setter TargetName="Border" 
                                         Property="Background" 
@@ -84,26 +81,24 @@ Title="Окно теста" Height="450" Width="800" >
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="ListBoxItem">
-                                    <Border x:Name="Border" 
+                                        <Border x:Name="Border" 
                                 Padding="5" 
                                 Background="Transparent">
-                                        <StackPanel Orientation="Horizontal">
-                                            <!-- Галочка (изначально скрыта) -->
-                                            <TextBlock x:Name="CheckMark" 
+                                            <StackPanel Orientation="Horizontal">
+                                                <!-- Галочка (изначально скрыта) -->
+                                                <TextBlock x:Name="CheckMark" 
                                                Text="✓" 
                                                Foreground="#7F3838"
                                                FontWeight="Bold"
                                                Width="20"
                                                Visibility="Collapsed"
                                                VerticalAlignment="Center"/>
-
-                                            <!-- Текст ответа -->
-                                            <TextBlock Text="{Binding Text}" 
+                                                <!-- Текст ответа -->
+                                                <TextBlock Text="{Binding Text}" 
                            VerticalAlignment="Center"/>
-                                        </StackPanel>
-                                    </Border>
-
-                                    <ControlTemplate.Triggers>
+                                            </StackPanel>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
                                         <!-- Показываем галочку при выборе -->
                                         <Trigger Property="IsSelected" Value="True">
                                             <Setter TargetName="CheckMark" 
@@ -148,12 +143,6 @@ Title="Окно теста" Height="450" Width="800" >
         <StackPanel Orientation="Horizontal" Grid.ColumnSpan="4"  Background="PeachPuff" >
             <Button Content="назад " Command="{Binding Back}" 
              Background="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838" BorderThickness ="0"/>
-            <!--<Button Content="Окно ре-тов " Command="{Binding OpenResultWin}"  
-             Background="PeachPuff"  FontFamily="Impact" FontSize="15" Foreground="#FF7F3838" BorderThickness ="0"/>
-            <Button Content=" Все тесты " Command="{Binding OpenAllTestWin}"  
-             Background="PeachPuff"  FontFamily="Impact" FontSize="15" Foreground="#FF7F3838" BorderThickness ="0"/>
-            <Button Content=" Окно профиля"  HorizontalAlignment="Left" Command="{Binding OpenUserStWin}" 
-               Background="PeachPuff" BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838"/>-->
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="1">
             <Label Content="Название теста" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838" />
@@ -172,6 +161,5 @@ Background="{x:Null}" FontFamily="Impact" FontSize="15"
         </StackPanel>
         <Button Content="Завершить" Command="{Binding SendResult}" Grid.Row="4" Margin="0 0 20 10" HorizontalAlignment="Right"
                Background="{x:Null}" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838" BorderBrush="{x:Null}"/>
-
     </Grid>
 </Window>

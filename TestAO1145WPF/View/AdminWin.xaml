@@ -53,13 +53,9 @@ xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
                        BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838">
                 <MenuItem Header="Добавить" Command="{Binding OpenAddTeacher}"  
                           Background="PeachPuff" BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838"/>
-                <!--<MenuItem Header="Изменить" Command="{Binding OpenAddStudent}"/>
-                <MenuItem Header="Изменить" Command="{Binding OpenAddSubject}"/>-->
             </MenuItem>
             <MenuItem Header="Удалить" BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838">
                 <MenuItem Header="Добавить" Command="{Binding OpenDelete}" />
-                <!--<MenuItem Header="Изменить" Command="{Binding OpenDeleteT}"/>
-                <MenuItem Header="Изменить" Command="{Binding OpenDeleteSt}"/>-->
             </MenuItem>
         </Menu>
         <TabControl Grid.Row="1" Background="PapayaWhip" BorderBrush="{x:Null}"  >
@@ -97,7 +93,6 @@ xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
                            CommandParameter="{Binding Student}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
-                       
                         <ListBox.ItemTemplate >
                             <DataTemplate >
                                 <StackPanel  Orientation="Horizontal" >

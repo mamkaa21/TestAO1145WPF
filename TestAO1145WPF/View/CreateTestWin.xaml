@@ -165,9 +165,6 @@
         </Grid.ColumnDefinitions>
         <Button Content="   Назад   " HorizontalAlignment="Left" Command="{Binding Back}"  
           Background="PeachPuff" BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838"/>
-        <!--<TabControl Grid.Row="1" Grid.ColumnSpan="7" Grid.RowSpan="7"  Background="PapayaWhip" BorderBrush="{x:Null}">
-            <TabItem Header=""  Background="PeachPuff" Margin="0 0 0 -2"
-                      FontFamily="Impact" FontSize="15" Foreground="#FF7F3838">-->
         <StackPanel Grid.Row="1" Grid.RowSpan="2" Background="PapayaWhip">
             <Label Content="Название"  Foreground="#FF7F3838" FontFamily="Impact" FontSize="15"/>
             <TextBox Text="{Binding Test.Name}" FontFamily="Impact" FontSize="15"
@@ -186,12 +183,9 @@
             <Label Content="Количество вопросов при прохождении"  Foreground="#FF7F3838" FontFamily="Impact" FontSize="15"/>
             <TextBox Text="{Binding Test.CountQuestionTest}" FontFamily="Impact" FontSize="15"
                  Foreground="#FF7F3838" BorderThickness="0 0 0 1" Margin="0 0 0 20" BorderBrush="#FF7F3838"  Background="PapayaWhip"/>
-            <!--SelectedValuePath="{Binding Good.Category}"-->
         </StackPanel>
         <Button  Grid.Row="3" Content="Далее" Command="{Binding OpenCreateQForT}" FontFamily="Impact" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"
                             Foreground="#FF7F3838"  BorderBrush="{x:Null}"  Background="PapayaWhip"/>
-        <!--</TabItem>
-        </TabControl>-->
     </Grid>
 </Window>
 
