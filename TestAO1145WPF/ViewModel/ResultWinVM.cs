@@ -70,11 +70,7 @@ namespace TestAO1145WPF.ViewModel
             thread1.Start();
         }
 
-        internal void SetWindow(ResultWin resultWin)
-        {
-           this.resultWin = resultWin;
-        }
-        ResultWin resultWin;
+        
       
     }
 }

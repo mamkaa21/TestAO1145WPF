@@ -19,6 +19,7 @@ public partial class Studentanswer
     public string? Name { get; set; }
     public string? StudentName { get; set; }
     public string? StudentLastName { get; set; }
+    public string? Test { get; set; }
 
     public virtual ICollection<Testcrossquestion> Testcrossquestions { get; set; } = new List<Testcrossquestion>();
 }

@@ -100,12 +100,7 @@ namespace TestAO1145WPF.ViewModel
         private DispatcherTimer timer = null;
         AdminWin adminWin;
         public Command OpenAddTeacher { get; }
-        //public Command OpenEditTeacher { get; }
-        //public Command OpenAddNewStudent { get; }
         public Command OpenDelete { get; }
-        //public Command OpenDeleteT { get; }
-        //public Command OpenDeleteST { get; }
-
         public ICommand DoubleClickCommand { get; }
 
         JsonSerializerOptions options = new JsonSerializerOptions();

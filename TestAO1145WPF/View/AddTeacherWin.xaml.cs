@@ -56,5 +56,10 @@ namespace TestAO1145WPF.View
             }
             vm.UpdateVisible();
         }
+
+        private void tabs_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

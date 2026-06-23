@@ -45,12 +45,7 @@ namespace TestAO1145WPF.ViewModel
         public TeacherWinVM()
         {
             timerStart();
-            OpenResultWin = new Command(async () =>
-            {
-                ResultWin resultWin = new ResultWin();
-                resultWin.Show();
-                Signal();
-            });
+           
             OpenAllTestWin = new Command(async () =>
             {
                 AllTestWin allTestWin = new AllTestWin();

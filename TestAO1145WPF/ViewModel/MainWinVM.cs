@@ -94,12 +94,12 @@ namespace TestAO1145WPF.ViewModel
         public MainWinVM()
         {
             timerStart();
-            OpenResultForOneStWin = new Command(async () =>
-            {
-                ResultForOneStWin resultWin = new ResultForOneStWin();
-                resultWin.Show();
-                Signal();
-            });
+            //OpenResultForOneStWin = new Command(async () =>
+            //{
+            //    ResultForOneStWin resultWin = new ResultForOneStWin();
+            //    resultWin.Show();
+            //    Signal();
+            //});
             OpenAllTestForOneStWin = new Command(async () =>
             {
                 AllTestForOneStWin allTestWin = new AllTestForOneStWin();

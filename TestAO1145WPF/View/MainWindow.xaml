@@ -18,8 +18,6 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Background="PeachPuff">
-            <Button Content="Окно ре-тов " HorizontalAlignment="Left" Command="{Binding OpenResultForOneStWin}" 
-                    Background="PeachPuff" BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838"/>
             <Button Content=" Все тесты "  HorizontalAlignment="Left" Command="{Binding OpenAllTestForOneStWin}" 
                     Background="PeachPuff" BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838"/>
             <Button Content=" Окно профиля"  HorizontalAlignment="Left" Command="{Binding OpenUserStWin}" 

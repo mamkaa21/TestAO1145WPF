@@ -12,7 +12,7 @@
     <Window.Resources>
         <vm:EnterWinVM x:Key ="vm"/>
     </Window.Resources>
-    <Grid Background="BlanchedAlmond" Cursor="">
+    <Grid Background="#FFF9EB" Cursor="">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -30,17 +30,18 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Label Grid.Column="1" Grid.Row="2" Content="Логин"  HorizontalAlignment="Right" 
-               VerticalAlignment="Center" FontFamily="Impact" FontSize="25" Foreground="#FF7F3838"/>
-        <TextBox Text="{Binding Student.Login}" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="2" Margin="0 20 0 20" 
-                 FontFamily="Impact" FontSize="15" Foreground="#FF7F3838"/>
-        <Label Grid.Column="1" Grid.Row="3"  Content="Пароль"  FontFamily="Impact" FontSize="24" 
-               HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FF7F3838" />
-        <PasswordBox x:Name="passwordBox" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="3" Margin="0 20 0 20" 
-                 FontFamily="Impact" FontSize="13" Foreground="#FF7F3838" >
+        <Label Grid.Column="1"  Content="Добро пожаловать в ITest📑"  Grid.ColumnSpan="4" HorizontalAlignment="Center"
+               VerticalAlignment="Center" FontFamily="Roboto" FontSize="30" Foreground="#FF68827A" FontWeight="Bold"/>
+        <Label Grid.Column="1" Grid.Row="2" Content="Логин"  HorizontalAlignment="Right" FontWeight="DemiBold"
+               VerticalAlignment="Center" FontFamily="Roboto" FontSize="25" Foreground="#FF68827A"/>
+        <TextBox Text="{Binding Student.Login}" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="2" Margin="0 20 0 20" FontWeight="DemiBold"
+                 FontFamily="Roboto" FontSize="15" Foreground="#FF68827A"/>
+        <Label Grid.Column="1" Grid.Row="3"  Content="Пароль"  FontFamily="Roboto" FontSize="24" FontWeight="DemiBold"
+               HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FF68827A" />
+        <PasswordBox x:Name="passwordBox" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="3" Margin="0 20 0 20" FontWeight="DemiBold"
+                 FontFamily="Roboto" FontSize="13" Foreground="#FF68827A" >
         </PasswordBox>
-        <!--<PasswordBox x:Name="passwordBox" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="3" Margin="0 20 0 20" />-->
-        <Button Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2" Content="Войти" Margin="10" Command="{Binding Enter}"
-                FontFamily="Impact" FontSize="30" Foreground="#FF7F3838" Background="BlanchedAlmond" BorderBrush="BlanchedAlmond"/>
+        <Button Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2" Content="Войти" Margin="10" Command="{Binding Enter}" FontWeight="DemiBold"
+                FontFamily="Roboto" FontSize="25" Foreground="#FF68827A" Background="#FFF9EB" BorderBrush="{x:Null}"/>
     </Grid>
 </Window>

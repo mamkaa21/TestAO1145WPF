@@ -25,12 +25,7 @@ namespace TestAO1145WPF.ViewModel
         public Command Back { get; }
         public UserStWinVM()
         {
-            OpenResultForOneStWin = new Command(async () =>
-            {
-                ResultForOneStWin resultWin = new ResultForOneStWin();
-                resultWin.Show();
-                Signal();
-            });
+           
             OpenAllTestForOneStWin = new Command(async () =>
             {
                 AllTestForOneStWin allTestWin = new AllTestForOneStWin();
