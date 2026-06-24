@@ -26,12 +26,6 @@
         </StackPanel>
         <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible" Background="BlanchedAlmond" 
 ItemsSource="{Binding StudentanswerList}" SelectedItem="{Binding Studentanswer}" x:Name="UserMenuL" Height="405" Grid.Row="2" BorderBrush="{x:Null}">
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseDoubleClick">
-                    <i:InvokeCommandAction Command="{Binding DoubleClickCommand}"
-                      CommandParameter="{Binding ElementName=UserMenuLB, Path=SelectedItem}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
             <ListBox.ItemTemplate >
                 <DataTemplate >
                     <StackPanel Orientation="Horizontal" Width="800">
