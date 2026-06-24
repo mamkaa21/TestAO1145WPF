@@ -38,13 +38,13 @@ Title="Окно профиля" Height="450" Width="800">
         <Label Content="Преподаватель "   Grid.Row="2"  FontFamily="Impact" FontSize="20" Foreground="#FF7F3838" />
         <Label Content="{Binding Teacher.LastName}" 
                  Background="PapayaWhip"  IsEnabled="{Binding ListBoxEnabled}" Grid.Row="2" Grid.Column="1" 
-                 Height="30" VerticalAlignment="Top" BorderThickness="0 0 0 2" BorderBrush="#FF7F3838"/>
-        <Label Content="{Binding Teacher.FirstName}" Background="PapayaWhip" BorderBrush="#FF7F3838"
+                 Height="30" VerticalAlignment="Top" BorderThickness="0 0 0 2" BorderBrush="#FF7F3838" FontFamily="Impact" FontSize="20" Foreground="#FF7F3838"/>
+        <Label Content="{Binding Teacher.FirstName}" Background="PapayaWhip" BorderBrush="#FF7F3838" FontFamily="Impact" FontSize="20" Foreground="#FF7F3838"
                  BorderThickness="0 0 0 2"   IsEnabled="{Binding ListBoxEnabled}" Grid.Row="2" Grid.Column="2" 
                  Height="30" VerticalAlignment="Top"/>
         <Label Content="Предметы"  Grid.Row="3" FontFamily="Impact" FontSize="20" Foreground="#FF7F3838"/>
         <ListBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="2" Background="PapayaWhip"
-                 ItemsSource="{Binding Teacher.subject}" 
+                 ItemsSource="{Binding Teacher.subject}" FontFamily="Impact" FontSize="20" Foreground="#FF7F3838"
                  DisplayMemberPath="Name"/>
     </Grid>
 </Window>

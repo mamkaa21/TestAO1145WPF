@@ -97,6 +97,8 @@ namespace TestAO1145WPF.ViewModel
 
                 CreateTWithQWin createTWith = new CreateTWithQWin(Test);
                 createTWith.Show();
+                CloseWindow();
+
             });
            
         }
@@ -116,6 +118,15 @@ namespace TestAO1145WPF.ViewModel
                 SubjectList = await responce.Content.ReadFromJsonAsync<List<Subject>>();
                 return;
             }
+        }
+        CreateTestWin createTestWin;
+        internal void SetWindow(CreateTestWin createTestWin)
+        {
+            this.createTestWin = createTestWin;
+        }
+        internal void CloseWindow()
+        {
+            this.createTestWin.Close();
         }
     }
 

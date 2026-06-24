@@ -46,7 +46,6 @@ namespace TestAO1145WPF.ViewModel
             }
         }
         private DispatcherTimer timer = null;
-        public Command OpenResultWin { get; }
         public Command OpenAllTestWin { get; }
         public Command OpenUserTWin { get; }
         public Command OpenNewTestWin { get; }

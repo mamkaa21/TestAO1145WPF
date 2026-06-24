@@ -158,7 +158,7 @@ xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
             <RowDefinition Height="25"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button Content="   Назад   " HorizontalAlignment="Left" Command="{Binding OpenResultWin}"
+        <Button Content="   Назад   " HorizontalAlignment="Left" Command="{Binding Back}"
           FontFamily="Impact" FontSize="15" Foreground="#FF7F3838" Background="PeachPuff"  BorderBrush="{x:Null}"/>
         <TabControl x:Name="tabs" Grid.Row="1" Grid.ColumnSpan="7" Grid.RowSpan="7"  Background="PapayaWhip" BorderBrush="{x:Null}" SelectionChanged="tabs_SelectionChanged" Foreground="{x:Null}">
             <!--FFF9EB-->

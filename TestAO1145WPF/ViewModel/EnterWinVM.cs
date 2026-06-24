@@ -78,20 +78,6 @@ namespace TestAO1145WPF.ViewModel
                        // CloseWindow();
 
                     } return;
-                    //if (d.RoleId == 1) //сначала лезем к студентам ищем потом к учителям потом к админу
-                    //{
-                    //    //AdminWin adminWin = new AdminWin();
-                    //    //adminWin.Show();
-                    //    Signal();
-                    //    //enterWindow.Close();
-                    //}
-                    //else
-                    //{
-                    //    //UserMenu userMenu = new UserMenu();
-                    //    //userMenu.Show();
-                    //    Signal();
-                    //    //enterWindow.Close();
-                    //}
                 }
                 else
                 {
@@ -100,7 +86,6 @@ namespace TestAO1145WPF.ViewModel
                     return;
                 }
             });
-
         }
 
         EnterWin enterWindow;

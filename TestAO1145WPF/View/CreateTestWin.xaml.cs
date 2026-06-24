@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TestAO1145WPF.ViewModel;
 
 namespace TestAO1145WPF.View
 {
@@ -22,6 +23,7 @@ namespace TestAO1145WPF.View
         public CreateTestWin()
         {
             InitializeComponent();
+            (DataContext as CreateTestWinVM).SetWindow(this);
         }
     }
 }

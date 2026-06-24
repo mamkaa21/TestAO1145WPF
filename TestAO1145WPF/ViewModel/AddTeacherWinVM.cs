@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using TestAO1145WPF.Model;
+using TestAO1145WPF.View;
 
 namespace TestAO1145WPF.ViewModel
 {
@@ -85,6 +86,7 @@ namespace TestAO1145WPF.ViewModel
             get => Clas == null ? Visibility.Collapsed : Visibility.Visible;
         }
 
+        public Command Back { get; }
         public Command SaveTea { get; }
         public Command SaveSt { get; }
         public Command SaveSubj { get; }
@@ -157,7 +159,7 @@ namespace TestAO1145WPF.ViewModel
                 return;
             }
         }
-
+        TeacherWin teacherWin;
         public AddTeacherWinVM()
         {
             Task.Run(async () =>
@@ -165,7 +167,11 @@ namespace TestAO1145WPF.ViewModel
                 await GetAllSubject();
                 await GetAllClass();
             });
-            SaveTea = new Command(async() =>// NO работает
+            Back = new Command(async() =>
+            {
+                CloseWindow();
+            });
+            SaveTea = new Command(async() =>// работает
             {
                 Teacher.subject.Clear();
                 foreach (var subj in listSubjects.SelectedItems)
@@ -366,7 +372,6 @@ namespace TestAO1145WPF.ViewModel
                     MessageBox.Show("Error2");
                 return;
             });
-            
         }
 
         internal void UpdateVisible()
@@ -382,6 +387,10 @@ namespace TestAO1145WPF.ViewModel
         internal void SetListSubjects(ListBox listSubjects)
         {
             this.listSubjects = listSubjects;
+        }
+        internal void CloseWindow()
+        {
+            this.teacherWin.Close();
         }
     }
 }

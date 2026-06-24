@@ -100,7 +100,7 @@ namespace TestAO1145WPF.ViewModel
         private DispatcherTimer timer = null;
         AdminWin adminWin;
         public Command OpenAddTeacher { get; }
-        public Command OpenDelete { get; }
+        //public Command OpenDelete { get; }
         public ICommand DoubleClickCommand { get; }
 
         JsonSerializerOptions options = new JsonSerializerOptions();
@@ -112,12 +112,12 @@ namespace TestAO1145WPF.ViewModel
                 addTeacherWin.Show();
                 Signal();   
             });
-            OpenDelete = new Command(async () =>
-            {
-                //MainWindow mainWindow = new MainWindow();
-                //mainWindow.Show();
-                Signal();
-            });
+            //OpenDelete = new Command(async () =>
+            //{
+            //    //MainWindow mainWindow = new MainWindow();
+            //    //mainWindow.Show();
+            //    Signal();
+            //});
 
             DoubleClickCommand = new RelayCommand(arg => {
                 var win = new AddTeacherWin(arg);

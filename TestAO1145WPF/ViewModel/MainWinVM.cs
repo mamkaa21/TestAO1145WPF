@@ -85,7 +85,6 @@ namespace TestAO1145WPF.ViewModel
         }
 
         private DispatcherTimer timer = null;
-        public Command OpenResultForOneStWin { get; }
         public Command OpenAllTestForOneStWin { get; }
         public Command OpenUserStWin { get; }
         public ICommand DoubleClickCommand { get; private set; }
@@ -94,12 +93,6 @@ namespace TestAO1145WPF.ViewModel
         public MainWinVM()
         {
             timerStart();
-            //OpenResultForOneStWin = new Command(async () =>
-            //{
-            //    ResultForOneStWin resultWin = new ResultForOneStWin();
-            //    resultWin.Show();
-            //    Signal();
-            //});
             OpenAllTestForOneStWin = new Command(async () =>
             {
                 AllTestForOneStWin allTestWin = new AllTestForOneStWin();

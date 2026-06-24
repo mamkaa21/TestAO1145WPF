@@ -15,6 +15,16 @@ namespace TestAO1145WPF.ViewModel
 {
      class AllTestWinVM : BaseVM
     {
+        private Teacher teacher { get; set; }
+        public Teacher Teacher
+        {
+            get => teacher;
+            set
+            {
+                teacher = value;
+                Signal(nameof(Teacher));
+            }
+        }
         private Test test { get; set; }
         public Test Test
         {
@@ -41,12 +51,12 @@ namespace TestAO1145WPF.ViewModel
         public AllTestWinVM()
         {
             timerStart();
-            //Back = new Command(async()=>
-            //{
-            //    TeacherWin teacherWin = new TeacherWin();   
-            //    teacherWin.Show();
-            //    //CloseWindow();
-            //});
+            Back = new Command(async () =>
+            {
+                //TeacherWin teacherWin = new TeacherWin(Teacher);
+                //teacherWin.Show();
+                CloseWindow();
+            });
             DoubleClickCommand = new RelayCommand(DoubleClickExecute);
         }
         private void DoubleClickExecute(object parameter)
