@@ -29,7 +29,7 @@
             <ListBox.ItemTemplate >
                 <DataTemplate >
                     <StackPanel Orientation="Horizontal" Width="800">
-                        <TextBlock  Text="{Binding StudentName, StringFormat={}Студент: Имя {0}}" Foreground="#FF7F3838"/>
+                        <TextBlock  Text="{Binding StudentName, StringFormat={}Студент Имя {0}}" Foreground="#FF7F3838"/>
                         <TextBlock Margin="20 0 0 0"  Text="{Binding StudentLastName, StringFormat={}Фамилия {0}}" Foreground="#FF7F3838"/>
                         <TextBlock Margin="20 0 0 0"  Text="{Binding Test, StringFormat={}Название теста: {0}}" Foreground="#FF7F3838"/>
                         <TextBlock Margin="20 0 0 0"  Text="{Binding Mark, StringFormat={}Оценка: {0}}" Foreground="#FF7F3838" />

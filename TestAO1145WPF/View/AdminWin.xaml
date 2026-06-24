@@ -54,9 +54,6 @@ xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
                 <MenuItem Header="Добавить" Command="{Binding OpenAddTeacher}"  
                           Background="PeachPuff" BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838"/>
             </MenuItem>
-            <MenuItem Header="Удалить" BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838">
-                <MenuItem Header="Добавить" Command="{Binding OpenDelete}" />
-            </MenuItem>
         </Menu>
         <TabControl Grid.Row="1" Background="PapayaWhip" BorderBrush="{x:Null}"  >
             <TabItem  Header="Преподаватели" FontFamily="Impact" FontSize="15" Margin="0 0 0 -2"
