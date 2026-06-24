@@ -48,7 +48,7 @@ namespace TestAO1145WPF.ViewModel
         public async void GetResults()
         {
             string arg = JsonSerializer.Serialize(Studentanswer);
-            var responce = await HttpClients.HttpClient.GetAsync($"Teacher/GetResults");
+            var responce = await HttpClients.HttpClient.GetAsync($"Student/GetResults");
 
             if (responce.StatusCode == System.Net.HttpStatusCode.BadRequest)
             {
