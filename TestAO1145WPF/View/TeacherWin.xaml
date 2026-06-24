@@ -28,7 +28,7 @@
             <Button Content=" Окно профиля" Command="{Binding OpenUserTWin}"  
                     Background="PeachPuff" BorderThickness="0"  FontFamily="Impact" FontSize="15" Foreground="#FF7F3838"/>
         </StackPanel>
-        <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible" Background="BlanchedAlmond"
+        <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible" Background="BlanchedAlmond" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838"
      ItemsSource="{Binding TestList}" SelectedItem="{Binding Test}" x:Name="UserMenuL" Height="405" Grid.Row="2">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseDoubleClick">

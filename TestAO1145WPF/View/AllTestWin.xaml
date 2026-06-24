@@ -25,7 +25,7 @@
         Background="PeachPuff" BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838"/>
         </StackPanel>
         <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible" Background="BlanchedAlmond" 
-ItemsSource="{Binding StudentanswerList}" SelectedItem="{Binding Studentanswer}" x:Name="UserMenuL" Height="405" Grid.Row="2">
+ItemsSource="{Binding StudentanswerList}" SelectedItem="{Binding Studentanswer}" x:Name="UserMenuL" Height="405" Grid.Row="2" BorderBrush="{x:Null}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseDoubleClick">
                     <i:InvokeCommandAction Command="{Binding DoubleClickCommand}"

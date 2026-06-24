@@ -28,9 +28,9 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <TextBlock Text="Выберите преподавателя" FontSize="15" Foreground="#FF7F3838"/>
-            <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.Row="2" Background="PapayaWhip"
-    ItemsSource="{Binding PrepodList}" SelectedItem="{Binding Prepod}" x:Name="UserMenuLB" Height="405">
+            <TextBlock Text="Выберите преподавателя" FontSize="15" Foreground="#FF7F3838" FontFamily="Impact"/>
+            <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.Row="2" Background="PapayaWhip" Foreground="#FF7F3838"
+    ItemsSource="{Binding PrepodList}" SelectedItem="{Binding Prepod}" x:Name="UserMenuLB" Height="405" FontFamily="Impact" FontSize="15" >
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseDoubleClick">
                         <i:InvokeCommandAction Command="{Binding DoubleClickCommand}"
@@ -52,11 +52,11 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
             <StackPanel Orientation="Horizontal">
-                <Button Content="Назад" Command="{Binding Back}" Margin="5"/>
-                <TextBlock Text="Выберите тест преподавателя" FontSize="15" Foreground="#FF7F3838"/>
+                <Button Content="Назад" Command="{Binding Back}" Margin="5" FontFamily="Impact" FontSize="15"/>
+                <TextBlock Text="Выберите тест преподавателя" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838"/>
             </StackPanel>
-            <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.Row="2" Background="PapayaWhip"
-ItemsSource="{Binding TestList}" SelectedItem="{Binding Test}" x:Name="UserMenu1LB" Height="405">
+            <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.Row="2" Background="PapayaWhip" Foreground="#FF7F3838"
+ItemsSource="{Binding TestList}" SelectedItem="{Binding Test}" x:Name="UserMenu1LB" Height="405" FontFamily="Impact" FontSize="15">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseDoubleClick">
                         <i:InvokeCommandAction Command="{Binding DoubleClickCommandNext}"

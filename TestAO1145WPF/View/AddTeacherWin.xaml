@@ -9,7 +9,7 @@ xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
          xmlns:i="http://schemas.microsoft.com/xaml/behaviors"     
         mc:Ignorable="d"
               DataContext="{DynamicResource vm}"
-    Title="Окно добавления и изменения" SizeToContent="Height" Height="450" Width="800">
+    Title="Окно добавления и изменения" SizeToContent="Height" Height="470" Width="800">
     <Window.Resources >
         <vm:AddTeacherWinVM x:Key ="vm"/>
         <Style TargetType="{x:Type TabItem}">
@@ -153,29 +153,29 @@ xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
         </Style>
 
     </Window.Resources >
-    <Grid  Background="#9FB2AC">
+    <Grid  Background="PeachPuff">
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button Content="   Назад   " HorizontalAlignment="Left" Command="{Binding OpenResultWin}" FontWeight="DemiBold"
-          FontFamily="Roboto" FontSize="15" Foreground="#5D0D18" Background="#9FB2AC"  BorderBrush="{x:Null}"/>
-        <TabControl x:Name="tabs" Grid.Row="1" Grid.ColumnSpan="7" Grid.RowSpan="7"  Background="#FFFFF9EB" BorderBrush="{x:Null}" SelectionChanged="tabs_SelectionChanged" Foreground="{x:Null}">
+        <Button Content="   Назад   " HorizontalAlignment="Left" Command="{Binding OpenResultWin}"
+          FontFamily="Impact" FontSize="15" Foreground="#FF7F3838" Background="PeachPuff"  BorderBrush="{x:Null}"/>
+        <TabControl x:Name="tabs" Grid.Row="1" Grid.ColumnSpan="7" Grid.RowSpan="7"  Background="PapayaWhip" BorderBrush="{x:Null}" SelectionChanged="tabs_SelectionChanged" Foreground="{x:Null}">
             <!--FFF9EB-->
-            <TabItem Header="Преподаватели"  Background="#FFF9EB" Margin="0 0 0 -2" FontWeight="DemiBold"
-                      FontFamily="Roboto" FontSize="15" Foreground="#5D0D18" Visibility="{Binding IsTeacher}" >
+            <TabItem Header="Преподаватели"  Background="PapayaWhip" Margin="0 0 0 -2" 
+                      FontFamily="Impact" FontSize="15" Foreground="#FF7F3838" Visibility="{Binding IsTeacher}" >
                 <StackPanel >
-                    <Label Content="Фамилия"  Foreground="#5D0D18" FontWeight="DemiBold"/>
-                    <TextBox Text="{Binding Teacher.LastName}" Foreground="#5D0D18" BorderThickness="0 0 0 1" BorderBrush="#5D0D18"  Background="#FFF9EB" FontWeight="DemiBold"/>
-                    <Label Content="Имя" Foreground="#5D0D18" FontWeight="DemiBold"/>
-                    <TextBox Text="{Binding Teacher.FirstName}" Foreground="#5D0D18" BorderThickness="0 0 0 1" BorderBrush="#5D0D18"  Background="#FFF9EB" FontWeight="DemiBold"/>
-                    <Label Content="Логин"  Foreground="#5D0D18" FontWeight="DemiBold"/>
-                    <TextBox Text="{Binding Teacher.Login}" Foreground="#5D0D18" BorderThickness="0 0 0 1" BorderBrush="#5D0D18"  Background="#FFF9EB" FontWeight="DemiBold"/>
-                    <Label Content="Пароль"  Foreground="#5D0D18" FontWeight="DemiBold"/>
-                    <TextBox Text="{Binding Teacher.Password}" Foreground="#5D0D18" BorderThickness="0 0 0 1" BorderBrush="#5D0D18"  Background="#FFF9EB" FontWeight="DemiBold"/>
-                    <Label Content="Предметы"  Foreground="#5D0D18"/>
-                    <ListBox SelectionMode="Multiple" x:Name="listSubjects" BorderThickness="0 1 0 1" BorderBrush="#5D0D18"
-                             Foreground="#5D0D18" Background="#FFF9EB"
+                    <Label Content="Фамилия"  Foreground="#FF7F3838" />
+                    <TextBox Text="{Binding Teacher.LastName}" Foreground="#FF7F3838" BorderThickness="0 0 0 1" BorderBrush="#FF7F3838"  Background="PapayaWhip" />
+                    <Label Content="Имя" Foreground="#FF7F3838"/>
+                    <TextBox Text="{Binding Teacher.FirstName}" Foreground="#FF7F3838" BorderThickness="0 0 0 1" BorderBrush="#FF7F3838"  Background="PapayaWhip" />
+                    <Label Content="Логин"  Foreground="#FF7F3838" />
+                    <TextBox Text="{Binding Teacher.Login}" Foreground="#FF7F3838" BorderThickness="0 0 0 1" BorderBrush="#FF7F3838"  Background="PapayaWhip" />
+                    <Label Content="Пароль"  Foreground="#FF7F3838" />
+                    <TextBox Text="{Binding Teacher.Password}" Foreground ="#FF7F3838"  BorderThickness="0 0 0 1" BorderBrush="#FF7F3838"  Background="PapayaWhip" />
+                        <Label Content="Предметы"  Foreground="#FF7F3838"/>
+                    <ListBox SelectionMode="Multiple" x:Name="listSubjects" BorderThickness="0 1 0 1" BorderBrush="#FF7F3838"
+                             Foreground="#FF7F3838" Background="PapayaWhip"
                              MaxHeight="200"
                              ItemsSource="{Binding SubjectList}">
                         <ListBox.ItemContainerStyle>
@@ -190,7 +190,7 @@ xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
                                                     <!-- Галочка (изначально скрыта) -->
                                                     <TextBlock x:Name="CheckMark" 
                                                         Text="✓" 
-                                                        Foreground="#5D0D18"
+                                                        Foreground="#FF7F3838"
                                                         FontWeight="Bold"
                                                         Width="20"
                                                         Visibility="Collapsed"
@@ -225,56 +225,56 @@ xmlns:vm ="clr-namespace:TestAO1145WPF.ViewModel"
                         </ListBox.ItemContainerStyle>
                     </ListBox>
                     <Button  Content="добавить" Command="{Binding SaveTea}" 
-                            Foreground="#5D0D18"  BorderBrush="{x:Null}"  Background="#FFF9EB"/>
+                            Foreground="#FF7F3838"  BorderBrush="{x:Null}"  Background="PapayaWhip"/>
                     <Button  Content="обновить" Command="{Binding EditTea}" 
-                            Foreground="#5D0D18"  BorderBrush="{x:Null}"  Background="#FFF9EB"/>
+                            Foreground="#FF7F3838"  BorderBrush="{x:Null}"  Background="PapayaWhip"/>
                 </StackPanel>
             </TabItem>
-            <TabItem  Header="Студенты "  Margin="0 0 0 -2" FontWeight="DemiBold"
-                     FontFamily="Roboto" FontSize="15" Foreground="#5D0D18" Background="#9FB2AC"  BorderBrush="{x:Null}" Visibility="{Binding IsStudent}">
+            <TabItem  Header="Студенты "  Margin="0 0 0 -2" 
+                     FontFamily="Impact" FontSize="15" Foreground="#FF7F3838" Background="#9FB2AC"  BorderBrush="{x:Null}" Visibility="{Binding IsStudent}">
                 <StackPanel >
-                    <Label Content="Фамилия" Foreground="#5D0D18" />
-                    <TextBox Text="{Binding Student.LastName}" Foreground="#5D0D18" BorderThickness="0 0 0 1" BorderBrush="#5D0D18"  Background="#FFF9EB"/>
-                    <Label Content="Имя" Foreground="#5D0D18"/>
-                    <TextBox Text="{Binding Student.FirstName}" Foreground="#5D0D18" BorderThickness="0 0 0 1" BorderBrush="#5D0D18"  Background="#FFF9EB"/>
-                    <Label Content="Группа" Foreground="#5D0D18"/>
+                    <Label Content="Фамилия" Foreground="#FF7F3838" />
+                    <TextBox Text="{Binding Student.LastName}" Foreground="#FF7F3838" BorderThickness="0 0 0 1" BorderBrush="#FF7F3838"  Background="PapayaWhip"/>
+                    <Label Content="Имя" Foreground="#FF7F3838"/>
+                    <TextBox Text="{Binding Student.FirstName}" Foreground="#FF7F3838" BorderThickness="0 0 0 1" BorderBrush="#FF7F3838"  Background="PapayaWhip"/>
+                    <Label Content="Группа" Foreground="#FF7F3838"/>
                     <ComboBox ItemsSource="{Binding ClassList}" SelectedItem="{Binding ClassSelected}" 
-                              DisplayMemberPath="Number" Foreground="#5D0D18"   />
-                    <Label Content="Логин"  Foreground="#5D0D18"/>
-                    <TextBox Text="{Binding Student.Login}" Foreground="#5D0D18" BorderThickness="0 0 0 1" BorderBrush="#5D0D18"  Background="#FFF9EB"/>
-                    <Label Content="Пароль"  Foreground="#5D0D18"/>
-                    <TextBox Text="{Binding Student.Password}" Foreground="#5D0D18" BorderThickness="0 0 0 1" BorderBrush="#5D0D18"  Background="#FFF9EB"/>
+                              DisplayMemberPath="Number" Foreground="#FF7F3838"   />
+                    <Label Content="Логин"  Foreground="#FF7F3838"/>
+                    <TextBox Text="{Binding Student.Login}" Foreground="#FF7F3838" BorderThickness="0 0 0 1" BorderBrush="#FF7F3838"  Background="PapayaWhip"/>
+                    <Label Content="Пароль"  Foreground="#FF7F3838"/>
+                    <TextBox Text="{Binding Student.Password}" Foreground="#FF7F3838" BorderThickness="0 0 0 1" BorderBrush="#FF7F3838"  Background="PapayaWhip"/>
 
                     <Button  Content="добавить" Command="{Binding SaveSt}" 
-        Foreground="#5D0D18"  BorderBrush="{x:Null}"  Background="#FFF9EB"/>
+        Foreground="#FF7F3838"  BorderBrush="{x:Null}"  Background="PapayaWhip"/>
                     <Button  Content="обновить" Command="{Binding EditSt}" 
-        Foreground="#5D0D18"  BorderBrush="{x:Null}"  Background="#FFF9EB"/>
+        Foreground="#FF7F3838"  BorderBrush="{x:Null}"  Background="PapayaWhip"/>
                 </StackPanel>
             </TabItem>
-            <TabItem  Header="Предмет" Margin="0 0 0 -2" FontWeight="DemiBold"
-                     FontFamily="Roboto" FontSize="15" Foreground="#5D0D18" Background="#9FB2AC"  BorderBrush="{x:Null}" Visibility="{Binding IsSubject}">
+            <TabItem  Header="Предмет" Margin="0 0 0 -2" 
+                     FontFamily="Impact" FontSize="15" Foreground="#FF7F3838" Background="PeachPuff"  BorderBrush="{x:Null}" Visibility="{Binding IsSubject}">
                 <StackPanel>
                     <StackPanel DataContext="{Binding Subject}">
-                        <Label Content="Название" Foreground="#5D0D18"/>
+                        <Label Content="Название" Foreground="#FF7F3838"/>
                         <TextBox Text="{Binding Name}" Grid.Column="1" Grid.ColumnSpan="2" 
-                             Foreground="#5D0D18" BorderThickness="0 0 0 1" BorderBrush="#5D0D18"  Background="#FFF9EB"/>
+                             Foreground="#FF7F3838" BorderThickness="0 0 0 1" BorderBrush="#FF7F3838"  Background="PapayaWhip"/>
                     </StackPanel>
                     <Button Content="добавить" Command="{Binding SaveSubj}" 
-                            Margin="0 25 0 0" Foreground="#5D0D18"  Background="{x:Null}" BorderBrush="{x:Null}" />
+                            Margin="0 25 0 0" Foreground="#FF7F3838"  Background="{x:Null}" BorderBrush="{x:Null}" />
                     <Button Content="обновить" Command="{Binding EditSubj}" 
-                            BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#5D0D18"/>
+                            BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FF7F3838"/>
                 </StackPanel>
             </TabItem>
-            <TabItem  Header="Группы" Margin="0 0 0 -2" FontWeight="DemiBold"
-                      Background="#FFF9EB" BorderBrush="#FFF9EB" FontFamily="Roboto" FontSize="15" Foreground="#FF7F3838" Visibility="{Binding IsClass}">
-                <StackPanel>
-                    <Label Content="Номер" Foreground="#5D0D18"/>
+            <TabItem  Header="Группы" Margin="0 0 0 -2" 
+                      Background="PeachPuff" BorderBrush="PeachPuff" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838" Visibility="{Binding IsClass}">
+                <StackPanel  >
+                    <Label Content="Номер" Foreground="#FF7F3838"/>
                     <TextBox Text="{Binding Clas.Number}" 
-              Foreground="#5D0D18" BorderThickness="0 0 0 1" BorderBrush="#5D0D18"  Background="#FFF9EB"/>
+              Foreground="#FF7F3838" BorderThickness="0 0 0 1" BorderBrush="#FF7F3838"  Background="PapayaWhip"/>
                     <Button  Content="добавить" Command="{Binding SaveCl}" 
-             Margin="0 25 0 0" Foreground="#5D0D18"  Background="{x:Null}" BorderBrush="{x:Null}" />
+             Margin="0 25 0 0" Foreground="#FF7F3838"  Background="{x:Null}" BorderBrush="{x:Null}" />
                     <Button Grid.Column="2" Grid.Row="5"  Content="обновить" Command="{Binding EditCl}" 
-             BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#5D0D18"/>
+             BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FF7F3838"/>
                 </StackPanel>
             </TabItem>
         </TabControl>

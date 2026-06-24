@@ -28,7 +28,7 @@ Title="Окно теста" Height="450" Width="800" >
             <Label Content="Название теста" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838" />
             <Label Content="{Binding Test.Name}" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838" Width="250"/>
         </StackPanel>
-        <ListBox ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.Row="2" Background="PapayaWhip"                    
+        <ListBox ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.Row="2" Background="PapayaWhip"  FontFamily="Impact" FontSize="15" Foreground="#FF7F3838"                  
             ItemsSource="{Binding QuestionList}" SelectedItem="{Binding Question}" x:Name="UserMenuLB" >
             <ListBox.ItemTemplate >
                 <DataTemplate >
@@ -38,7 +38,7 @@ Title="Окно теста" Height="450" Width="800" >
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <CheckBox Content="{Binding Text}"
-                                      IsChecked="{Binding IsChecked}" Foreground="#FF7F3838"/>
+                                      IsChecked="{Binding IsChecked}" FontFamily="Impact" FontSize="15" Foreground="#FF7F3838"/>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
